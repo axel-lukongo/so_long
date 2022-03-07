@@ -4,9 +4,6 @@
 # define HEIGHT 1200
 #include<fcntl.h>
 
-char	**ft_split(char *str, char *charset);
-
-
 
 typedef struct s_data
 {
