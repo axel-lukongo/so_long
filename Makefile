@@ -2,9 +2,9 @@ CC = gcc
 
 RM = rm -rf
 
-NAME = so_long
+NAME = so_long gnl/get_next_line.c gnl/get_next_line_utils.c
 
-SRCS = so_long.c\
+SRCS = so_long.c
 
 BONUS_SRCS	=	${BONUS}
 
