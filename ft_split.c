@@ -12,7 +12,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-//#include "so_long.h"
+#include "so_long.h"
 
 char	*ft_find(int c, char *str)
 {

@@ -10,7 +10,7 @@ char **init_map(char **map)
 
 	i = 0;
 	map = malloc(sizeof(char *) * 6);
-	fd = open("map.ber", O_RDONLY);
+	fd = open("map/map.ber", O_RDONLY);
 	map[i] = get_next_line(fd); 
 	while(map[i])
 	{
@@ -50,7 +50,7 @@ int main(void)
 	int		img_height;
 	char	*image;
 
-	image = "./wall.xpm";
+	image = "image/wall.xpm";
 	img.map = NULL;
 	img_width = 100;
 	img_height = 100;
