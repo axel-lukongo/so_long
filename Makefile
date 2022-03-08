@@ -4,7 +4,7 @@ RM = rm -rf
 
 NAME = so_long
 
-SRCS = so_long.c gnl/get_next_line.c gnl/get_next_line_utils.c
+SRCS = so_long.c gnl/get_next_line.c gnl/get_next_line_utils.c init_all.c
 
 BONUS_SRCS	=	${BONUS}
 

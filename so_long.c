@@ -1,66 +1,63 @@
 #include"minilibx/mlx.h"
 #include "so_long.h"
-#include<stdio.h>
 #include "gnl/get_next_line.h"
+/**
+ * @brief this fonction allow me to put image in the window,
+   while i don't find the '\n' or '\0', i check if the value in my map = 1 or 0.
+   if is 1 i print a wall else i print the flor and i step in next case of map.
+ * @param map: is a line of my map
+ * @param data: this strctur contain the element who i gone use during all my project,
+  line the pointer to the mlx, the pointer to my window...
+ * @param img_width this is the width of my image
+ * @param img_height this is the height of my image
+ * @param x and y is the position where i start to print in my window.
+ */
 
-int count_line(char *file)
+void print_image(char *map, t_data data, int img_width, int img_height)
 {
-	int	fd;
-	int	nb_line;
-	char	*str;
+	static int y = 100;
+	int x;
+	int i;
 
-	nb_line = 0;
-	fd = open(file, O_RDONLY);
-	str = get_next_line(fd);
-	while(str)
+	x = 150;
+	i = 0;
+	while(map[i] != '\n' && map[i] != '\0')
 	{
-		nb_line++;
-		str = get_next_line(fd);
+		if(map[i] == '1')
+			data.img = mlx_xpm_file_to_image(data.ptr_mlx, "image/wall.xpm", &img_width, &img_height);
+		else if (map[i] == '0')
+			data.img = mlx_xpm_file_to_image(data.ptr_mlx, "image/terre.xpm", &img_width, &img_height);
+		else if (map[i] == 'p')
+			data.img = mlx_xpm_file_to_image(data.ptr_mlx, "image/hero_fly.xpm", &img_width, &img_height);
+		mlx_put_image_to_window(data.ptr_mlx, data.win, data.img, x, y);
+		i++;
+		x += 50;
 	}
-	close(fd);
-	return(nb_line);
+	y += 50;
 }
 
-char **init_map(char **map)
+/**
+ * @brief this fonction allow me to send my map line by line
+  to the fonction print_map
+ * @param data this strctur contain the element who i gone use during all my project,
+  line the pointer to the mlx, the pointer to my window...
+ * @param img_width this is the width of my image
+ * @param img_height this is the height of my image
+ * @param the variable i is juste a index for browse my map line by line
+ */
+void	send_line_map(t_data data, int img_width, int img_height)
 {
 	int	i;
-	int	fd;
-	int	nb_line;
-
-	nb_line = count_line("map/map.ber");
-	i = 0;
-	map = malloc(sizeof(char *) * nb_line);
-	fd = open("map/map.ber", O_RDONLY);
-	map[i] = get_next_line(fd); 
-	while(map[i])
-	{
-		i++;
-		map[i] = get_next_line(fd); 
-	}
-	return(map);
-}
-
-int	print_img(t_data img, char *image, int img_width, int img_height)
-{
-	void	*ptr_mlx;
-	void	*win;
-	int		i;
-	int		index = 0;
-	i = 0;
-	(void)win;
-	ptr_mlx = mlx_init();
-	win = mlx_new_window(ptr_mlx, WIDTH, HEIGHT, "windows");
 	
-	while(img.map[0][i] != '\n')
+	i = 0;
+	data.ptr_mlx = mlx_init();
+	data.win = mlx_new_window(data.ptr_mlx, WIDTH, HEIGHT, "windows");
+	while(data.map[i])
 	{
-		img.img = mlx_xpm_file_to_image(ptr_mlx, image, &img_width, &img_height);
-		mlx_put_image_to_window(ptr_mlx, win,img.img, index, 0);
+		print_image(data.map[i], data, img_width, img_height);
 		i++;
-		index += 50;
 	}
-
-	mlx_loop(ptr_mlx);
-	return(0);
+	mlx_loop(data.ptr_mlx);
 }
 
 int main(void)
@@ -68,12 +65,9 @@ int main(void)
 	t_data	img;
 	int		img_width;
 	int		img_height;
-	char	*image;
-
-	image = "image/wall.xpm";
 	img.map = NULL;
-	img_width = 100;
-	img_height = 100;
+	img_width = 5;
+	img_height = 5;
 	img.map = init_map(img.map);
-	print_img(img, image, img_width, img_height);
+	send_line_map(img, img_width, img_height);
 }
