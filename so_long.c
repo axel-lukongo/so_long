@@ -29,6 +29,10 @@ void print_image(char *map, t_data data, int img_width, int img_height)
 			data.img = mlx_xpm_file_to_image(data.ptr_mlx, "image/terre.xpm", &img_width, &img_height);
 		else if (map[i] == 'p')
 			data.img = mlx_xpm_file_to_image(data.ptr_mlx, "image/hero_fly.xpm", &img_width, &img_height);
+		else if (map[i] == 'c')
+			data.img = mlx_xpm_file_to_image(data.ptr_mlx, "image/cristaux.xpm", &img_width, &img_height);
+		else if (map[i] == 'E')
+			data.img = mlx_xpm_file_to_image(data.ptr_mlx, "image/porte.xpm", &img_width, &img_height);
 		mlx_put_image_to_window(data.ptr_mlx, data.win, data.img, x, y);
 		i++;
 		x += 50;
