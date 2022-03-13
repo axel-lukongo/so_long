@@ -1,0 +1,4 @@
+w = 119 it for move up the hero
+s = 115 it for move down the hero 
+a = 97 it for move to the left the hero 
+d = 100, it for move the hero to the right

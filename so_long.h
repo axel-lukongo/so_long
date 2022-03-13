@@ -1,7 +1,7 @@
 #ifndef SO_LONG_H
 # define SO_long_h
-# define WIDTH 1200
-# define HEIGHT 1200
+# define WIDTH 500
+# define HEIGHT 500
 #include<fcntl.h>
 #include<stdio.h>
 #include "gnl/get_next_line.h"
