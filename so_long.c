@@ -53,30 +53,38 @@ void	ft_putnbr(int nb)
  * @param x and y is the position where i start to print in my window.
  */
 
-void	print_image(char *map, t_data data)
+void	print_image(t_data data)
 {
-	static int	y = 100;
+	int	y = 100;
 	int			x;
 	int			i;
+	int			j;
 
+	j = 0;
 	x = 150;
 	i = 0;
-	while (map[i] != '\n' && map[i] != '\0')
+	while (data.map[i][j] != '\0')
 	{
-		if (map[i] == '1')
+		if (data.map[i][j] == '1')
 			mlx_put_image_to_window(data.ptr_mlx, data.win, data.wall, x, y);
-		else if (map[i] == '0')
+		else if (data.map[i][j] == '0')
 				mlx_put_image_to_window(data.ptr_mlx, data.win, data.flor, x, y);
-		else if (map[i] == 'p')
+		else if (data.map[i][j] == 'p')
 			mlx_put_image_to_window(data.ptr_mlx, data.win, data.perso, x, y);
-		else if (map[i] == 'c')
+		else if (data.map[i][j] == 'c')
 			mlx_put_image_to_window(data.ptr_mlx, data.win, data.collect, x, y);		
-		else if (map[i] == 'E')
+		else if (data.map[i][j] == 'E')
 			mlx_put_image_to_window(data.ptr_mlx, data.win, data.door, x, y);
-		i++;
+		j++;
 		x += 50;
+		if(data.map[i][j] == '\n')
+		{
+			y += 50;
+			x = 150;
+			i++;
+			j = 0;
+		}
 	}
-	y += 50;
 }
 
 
@@ -91,27 +99,36 @@ void	print_image(char *map, t_data data)
  */
 void	send_line_map(t_data data)
 {
-	int	i;
-
-	i = 0;
-	
-	while(data.map[i])
-	{
-		print_image(data.map[i], data);
-		i++;
-	}
-	mlx_loop(data.ptr_mlx);
+	print_image(data);
 }
 
 int	deal_key(int key, t_data *data)
 {
-	//data.win = mlx_new_window(data.ptr_mlx, WIDTH, HEIGHT, "windows");
-	//(void) param;
-	if (key == 65307)
+	int x = 0;
+	int y = 0;
+	if (key == KEY_RIGHT)
 	{
-		ft_putchar(data->map[1][0]);
-		ft_putchar('\n');
-		//mlx_destroy_window(data->ptr_mlx, data->win);
+		while (data->map[x][y] != '\0')
+		{
+			if(data->map[x][y] == 'p')
+			{
+				if(data->map[x][y + 1] != '1')
+				{
+					data->map[x][y + 1] = 'p';
+					data->map[x][y] = '0';
+				}
+				break;
+			}
+			if(data->map[x][y] == '\n')
+			{
+				x++;
+				y = 0;
+			}
+			y++;
+		}
+		destroy(data);
+		init_struct(data);
+		send_line_map(*data);
 	}
 	return (0);
 }
@@ -119,13 +136,11 @@ int	deal_key(int key, t_data *data)
 int main(void)
 {
 	t_data	data;
-	
-	
 	data.map = NULL;
-	
+
 	data.map = init_map(data.map);
 	init_struct(&data);
+	print_image(data);
 	mlx_key_hook(data.win, deal_key, &data);
-	send_line_map(data);
-	mlx_destroy_window(data.ptr_mlx, data.win);
+	mlx_loop(data.ptr_mlx);
 }

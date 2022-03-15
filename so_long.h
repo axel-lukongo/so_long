@@ -2,6 +2,11 @@
 # define SO_long_h
 # define WIDTH 1200
 # define HEIGHT 1200
+# define KEY_LEFT 97
+# define KEY_RIGHT 100
+# define KEY_UP 119
+# define KEY_DOWN 115
+# define ESC 65307
 #include<fcntl.h>
 #include<stdio.h>
 #include "gnl/get_next_line.h"
@@ -22,5 +27,6 @@ typedef struct s_data
 }	t_data;
 
 void init_struct(t_data *data);
+void destroy(t_data *data);
 
 #endif // !SO_LONG_H
