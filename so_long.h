@@ -25,8 +25,11 @@ typedef struct s_data
 	void	*door;
 	void	*flor;
 }	t_data;
-
-void init_struct(t_data *data);
-void destroy(t_data *data);
-
+void	print_image(t_data data);
+void	init_struct(t_data *data);
+void	destroy(t_data *data);
+void	move_right(t_data *data);
+void	move_left(t_data *data);
+void	move_up(t_data *data);
+void	move_down(t_data *data);
 #endif // !SO_LONG_H

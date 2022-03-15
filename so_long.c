@@ -97,39 +97,17 @@ void	print_image(t_data data)
  * @param img_height this is the height of my image
  * @param the variable i is juste a index for browse my map line by line
  */
-void	send_line_map(t_data data)
-{
-	print_image(data);
-}
 
 int	deal_key(int key, t_data *data)
 {
-	int x = 0;
-	int y = 0;
 	if (key == KEY_RIGHT)
-	{
-		while (data->map[x][y] != '\0')
-		{
-			if(data->map[x][y] == 'p')
-			{
-				if(data->map[x][y + 1] != '1')
-				{
-					data->map[x][y + 1] = 'p';
-					data->map[x][y] = '0';
-				}
-				break;
-			}
-			if(data->map[x][y] == '\n')
-			{
-				x++;
-				y = 0;
-			}
-			y++;
-		}
-		destroy(data);
-		init_struct(data);
-		send_line_map(*data);
-	}
+		move_right(data);
+	if (key == KEY_LEFT)
+		move_left(data);
+	if (KEY_DOWN)
+		move_down(data);
+	if (KEY_UP)
+	move_up(data);
 	return (0);
 }
 
@@ -137,7 +115,8 @@ int main(void)
 {
 	t_data	data;
 	data.map = NULL;
-
+	data.ptr_mlx = mlx_init();
+	data.win = mlx_new_window(data.ptr_mlx, WIDTH, HEIGHT, "windows");
 	data.map = init_map(data.map);
 	init_struct(&data);
 	print_image(data);

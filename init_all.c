@@ -8,8 +8,7 @@ void init_struct(t_data *data)
 
 	img_width = 5;
 	img_height = 5;
-	data->ptr_mlx = mlx_init();
-	data->win = mlx_new_window(data->ptr_mlx, WIDTH, HEIGHT, "windows");
+	
 	data->perso = mlx_xpm_file_to_image(data->ptr_mlx, "image/hero_fly.xpm", &img_width, &img_height);
 	data->wall = mlx_xpm_file_to_image(data->ptr_mlx, "image/wall.xpm", &img_width, &img_height);
 	data->collect = mlx_xpm_file_to_image(data->ptr_mlx, "image/cristaux.xpm", &img_width, &img_height);
