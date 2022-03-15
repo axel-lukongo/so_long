@@ -53,7 +53,7 @@ void	ft_putnbr(int nb)
  * @param x and y is the position where i start to print in my window.
  */
 
-void	print_image(char *map, t_data data, int img_width, int img_height)
+void	print_image(char *map, t_data data)
 {
 	static int	y = 100;
 	int			x;
@@ -64,31 +64,15 @@ void	print_image(char *map, t_data data, int img_width, int img_height)
 	while (map[i] != '\n' && map[i] != '\0')
 	{
 		if (map[i] == '1')
-		{
-			data.img = mlx_xpm_file_to_image(data.ptr_mlx, "image/wall.xpm", &img_width, &img_height);
-			mlx_put_image_to_window(data.ptr_mlx, data.win, data.img, x, y);
-		}
+			mlx_put_image_to_window(data.ptr_mlx, data.win, data.wall, x, y);
 		else if (map[i] == '0')
-		{
-				data.img = mlx_xpm_file_to_image(data.ptr_mlx, "image/terre.xpm", &img_width, &img_height);
-				mlx_put_image_to_window(data.ptr_mlx, data.win, data.img, x, y);
-		}
+				mlx_put_image_to_window(data.ptr_mlx, data.win, data.flor, x, y);
 		else if (map[i] == 'p')
-		{
-			data.perso = mlx_xpm_file_to_image(data.ptr_mlx, "image/hero_fly.xpm", &img_width, &img_height);
 			mlx_put_image_to_window(data.ptr_mlx, data.win, data.perso, x, y);
-		}
 		else if (map[i] == 'c')
-		{
-			data.img = mlx_xpm_file_to_image(data.ptr_mlx, "image/cristaux.xpm", &img_width, &img_height);
-			mlx_put_image_to_window(data.ptr_mlx, data.win, data.img, x, y);		
-		}
+			mlx_put_image_to_window(data.ptr_mlx, data.win, data.collect, x, y);		
 		else if (map[i] == 'E')
-		{
-			data.img = mlx_xpm_file_to_image(data.ptr_mlx, "image/porte.xpm", &img_width, &img_height);
-			mlx_put_image_to_window(data.ptr_mlx, data.win, data.img, x, y);
-		}
-//		mlx_put_image_to_window(data.ptr_mlx, data.win, data.img, x, y);
+			mlx_put_image_to_window(data.ptr_mlx, data.win, data.door, x, y);
 		i++;
 		x += 50;
 	}
@@ -105,7 +89,7 @@ void	print_image(char *map, t_data data, int img_width, int img_height)
  * @param img_height this is the height of my image
  * @param the variable i is juste a index for browse my map line by line
  */
-void	send_line_map(t_data data, int img_width, int img_height)
+void	send_line_map(t_data data)
 {
 	int	i;
 
@@ -113,19 +97,21 @@ void	send_line_map(t_data data, int img_width, int img_height)
 	
 	while(data.map[i])
 	{
-		print_image(data.map[i], data, img_width, img_height);
+		print_image(data.map[i], data);
 		i++;
 	}
 	mlx_loop(data.ptr_mlx);
 }
 
-int	deal_key(int key, t_data data)
+int	deal_key(int key, t_data *data)
 {
 	//data.win = mlx_new_window(data.ptr_mlx, WIDTH, HEIGHT, "windows");
 	//(void) param;
 	if (key == 65307)
 	{
-		mlx_destroy_window(data.ptr_mlx, data.win);
+		ft_putchar(data->map[1][0]);
+		ft_putchar('\n');
+		//mlx_destroy_window(data->ptr_mlx, data->win);
 	}
 	return (0);
 }
@@ -133,41 +119,13 @@ int	deal_key(int key, t_data data)
 int main(void)
 {
 	t_data	data;
-	int		img_width;
-	int		img_height;
-
-	data.ptr_mlx = mlx_init();
-	data.win = mlx_new_window(data.ptr_mlx, WIDTH, HEIGHT, "windows");
+	
+	
 	data.map = NULL;
-	img_width = 5;
-	img_height = 5;
+	
 	data.map = init_map(data.map);
-	mlx_key_hook(data.win, deal_key, (void *) 0);
-	send_line_map(data, img_width, img_height);
+	init_struct(&data);
+	mlx_key_hook(data.win, deal_key, &data);
+	send_line_map(data);
 	mlx_destroy_window(data.ptr_mlx, data.win);
 }
-
-/*
-typedef struct	s_vars {
-	void	*mlx;
-	void	*win;
-}				t_vars;
-
-int	ft_close(int keycode, t_vars *vars)
-{
-	(void) keycode;
-	mlx_destroy_window(vars->mlx, vars->win);
-	return (0);
-}
-
-int	main(void)
-{
-	t_vars	vars;
-
-	vars.mlx = mlx_init();
-	vars.win = mlx_new_window(vars.mlx, 500, 500, "Hello world!");
-	//mlx_hook(vars.win, 2, 1L<<0, ft_close, &vars);
-	mlx_key_hook(vars.win, deal_key, (void *)0);
-	mlx_loop(vars.mlx);
-}
-*/

@@ -15,12 +15,12 @@ typedef struct s_data
 	char	**map;
 	void	*img;
 	void	*perso;
+	void	*wall;
+	void	*collect;
+	void	*door;
+	void	*flor;
 }	t_data;
 
-typedef struct s_image
-{
-	char	*wall;
-	char	*flor;
-}	t_image;
+void init_struct(t_data *data);
 
 #endif // !SO_LONG_H
