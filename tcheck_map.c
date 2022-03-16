@@ -1,6 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   tcheck_map.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/16 12:26:23 by alukongo          #+#    #+#             */
+/*   Updated: 2022/03/16 12:26:28 by alukongo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include"so_long.h"
 #include"minilibx/mlx.h"
-
+/**
+ * @brief in this fonction i tcheck is i have at least one hero,
+           one exit, one collectable
+ * @param map 
+ */
 void	tcheck_map(char **map)
 {
 	if (tcheck_char(map, '1') == 0)
@@ -25,6 +41,13 @@ void	tcheck_map(char **map)
 	}
 }
 
+/**
+ * @brief in this fonction i tcheck the border of my map
+ * 
+ * widhth this is the lentgh is my first line of my map
+ * 
+ * @param map this is my map 
+ */
 void contour_map(char **map)
 {
 	int	i;

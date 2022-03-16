@@ -1,6 +1,13 @@
+
 #include"so_long.h"
 #include"minilibx/mlx.h"
-
+/**
+ * @brief i tcheck if i have the char in my variable c in my map
+ * 
+ * @param map 
+ * @param c the char who i want look in my map
+ * @return int 
+ */
 int tcheck_char(char **map, char c)
 {
 	int	i;
