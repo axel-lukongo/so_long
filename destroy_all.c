@@ -10,3 +10,4 @@ void destroy(t_data *data)
 	mlx_destroy_image(data->ptr_mlx, data->flor);
 //	mlx_destroy_display(data->ptr_mlx);
 }
+

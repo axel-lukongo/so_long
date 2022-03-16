@@ -16,31 +16,6 @@
 #include "gnl/get_next_line.h"
 #include<stdio.h>
 
-void	ft_putchar(char c)
-{
-	write(1, &c, 1);
-}
-
-void	ft_putnbr(int nb)
-{
-	unsigned int	nbr;
-
-	if (nb < 0)
-	{
-		ft_putchar('-');
-		nb = nb * (-1);
-	}
-	nbr = (unsigned int)nb;
-	if (nbr <= 9)
-		ft_putchar(nbr + '0');
-	if (nbr >= 10)
-	{
-		ft_putnbr (nbr / 10);
-		ft_putchar(nbr % 10 + '0');
-	}
-}
-
-
 /**
  * @brief this fonction allow me to put image in the window,
    while i don't find the '\n' or '\0', i check if the value in my map = 1 or 0.
@@ -55,11 +30,12 @@ void	ft_putnbr(int nb)
 
 void	print_image(t_data data)
 {
-	int	y = 100;
-	int			x;
-	int			i;
-	int			j;
+	int	y;
+	int	x;
+	int	i;
+	int	j;
 
+	y = 100;
 	j = 0;
 	x = 150;
 	i = 0;
@@ -68,10 +44,10 @@ void	print_image(t_data data)
 		if (data.map[i][j] == '1')
 			mlx_put_image_to_window(data.ptr_mlx, data.win, data.wall, x, y);
 		else if (data.map[i][j] == '0')
-				mlx_put_image_to_window(data.ptr_mlx, data.win, data.flor, x, y);
-		else if (data.map[i][j] == 'p')
+			mlx_put_image_to_window(data.ptr_mlx, data.win, data.flor, x, y);
+		else if (data.map[i][j] == 'P')
 			mlx_put_image_to_window(data.ptr_mlx, data.win, data.perso, x, y);
-		else if (data.map[i][j] == 'c')
+		else if (data.map[i][j] == 'C')
 			mlx_put_image_to_window(data.ptr_mlx, data.win, data.collect, x, y);		
 		else if (data.map[i][j] == 'E')
 			mlx_put_image_to_window(data.ptr_mlx, data.win, data.door, x, y);
@@ -87,37 +63,41 @@ void	print_image(t_data data)
 	}
 }
 
-
-/**
- * @brief this fonction allow me to send my map line by line
-  to the fonction print_map
- * @param data this strctur contain the element who i gone use during all my project,
-  line the pointer to the mlx, the pointer to my window...
- * @param img_width this is the width of my image
- * @param img_height this is the height of my image
- * @param the variable i is juste a index for browse my map line by line
- */
-
 int	deal_key(int key, t_data *data)
 {
+	static int i = 0;
+
 	if (key == KEY_RIGHT)
-		move_right(data);
-	if (key == KEY_LEFT)
-		move_left(data);
-	if (KEY_DOWN)
-		move_down(data);
-	if (KEY_UP)
-	move_up(data);
+		i += move_horizontal(data, 1);
+	else if (key == KEY_LEFT)
+		i += move_horizontal(data, -1);
+	else if (key == KEY_UP)
+		i += move_vertical(data, -1);
+	else if (key == KEY_DOWN)
+		i += move_vertical(data, 1);
+	else if (key == ESC)
+	{
+		destroy(data);
+		mlx_destroy_display(data->ptr_mlx);
+		mlx_destroy_window(data->ptr_mlx, data->win);
+	}
+	ft_printf("%d\n", i);
+	win_game(data);
 	return (0);
 }
 
-int main(void)
+int main(int ac, char **av)
 {
+	if (ac != 2)
+	{
+		ft_printf("give me a map");
+		return (0);
+	}
 	t_data	data;
 	data.map = NULL;
 	data.ptr_mlx = mlx_init();
 	data.win = mlx_new_window(data.ptr_mlx, WIDTH, HEIGHT, "windows");
-	data.map = init_map(data.map);
+	data.map = init_map(data.map, av[1]);
 	init_struct(&data);
 	print_image(data);
 	mlx_key_hook(data.win, deal_key, &data);

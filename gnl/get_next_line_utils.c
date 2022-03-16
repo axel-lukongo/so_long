@@ -13,7 +13,7 @@
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(char *str)
+size_t	ft_strlen_gnl(char *str)
 {
 	size_t	i;
 
@@ -44,8 +44,8 @@ char	*ft_strjoin(char *s1, char *s2)
 	int		i;
 	char	*str;
 
-	len1 = ft_strlen(s1);
-	len2 = ft_strlen(s2);
+	len1 = ft_strlen_gnl(s1);
+	len2 = ft_strlen_gnl(s2);
 	i = -1;
 	str = malloc(sizeof(char) * len1 + len2 + 1);
 	if (!str)
@@ -74,7 +74,7 @@ char	*ft_substr(char *s, unsigned int start, size_t len, int free_s)
 	if (!str)
 		return (NULL);
 	i = 0;
-	if (start < ft_strlen(s))
+	if (start < ft_strlen_gnl(s))
 	{
 		while (s[start + i] && i < len)
 		{

@@ -1,7 +1,7 @@
 #include"so_long.h"
 #include"minilibx/mlx.h"
 
-void init_struct(t_data *data)
+void	init_struct(t_data *data)
 {
 	int		img_width;
 	int		img_height;
@@ -13,8 +13,10 @@ void init_struct(t_data *data)
 	data->wall = mlx_xpm_file_to_image(data->ptr_mlx, "image/wall.xpm", &img_width, &img_height);
 	data->collect = mlx_xpm_file_to_image(data->ptr_mlx, "image/cristaux.xpm", &img_width, &img_height);
 	data->flor = mlx_xpm_file_to_image(data->ptr_mlx, "image/terre.xpm", &img_width, &img_height);
+	if (tcheck_char(data->map, 'C') == 0)
+		data->door = mlx_xpm_file_to_image(data->ptr_mlx, "image/door_open.xpm", &img_width, &img_height);
+	else
 	data->door = mlx_xpm_file_to_image(data->ptr_mlx, "image/porte.xpm", &img_width, &img_height);
-
 }
 
 /**
@@ -24,22 +26,22 @@ void init_struct(t_data *data)
  * @param file this is where my map file it storage
  * @return int 
  */
-int count_line(char *file)
+int	count_line(char *file)
 {
-	int	fd;
-	int	nb_line;
+	int		fd;
+	int		nb_line;
 	char	*str;
 
 	nb_line = 0;
 	fd = open(file, O_RDONLY);
 	str = get_next_line(fd);
-	while(str)
+	while (str)
 	{
 		nb_line++;
 		str = get_next_line(fd);
 	}
 	close(fd);
-	return(nb_line);
+	return (nb_line);
 }
 
 /**
@@ -48,21 +50,24 @@ int count_line(char *file)
  * @param map this is the map who i want initialise
  * @return char** i return the my map
  */
-char **init_map(char **map)
+char	**init_map(char **map, char *fichier)
 {
 	int	i;
 	int	fd;
 	int	nb_line;
 
-	nb_line = count_line("map/map.ber");
+	nb_line = count_line(fichier);
+	name_map(fichier);
 	i = 0;
 	map = malloc(sizeof(char *) * nb_line);
 	fd = open("map/map.ber", O_RDONLY);
 	map[i] = get_next_line(fd); 
-	while(map[i])
+	while (map[i])
 	{
 		i++;
 		map[i] = get_next_line(fd); 
 	}
+	tcheck_map(map);
+	contour_map(map);
 	return(map);
 }

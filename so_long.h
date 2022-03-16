@@ -1,7 +1,7 @@
 #ifndef SO_LONG_H
 # define SO_long_h
 # define WIDTH 1200
-# define HEIGHT 1200
+# define HEIGHT 450
 # define KEY_LEFT 97
 # define KEY_RIGHT 100
 # define KEY_UP 119
@@ -10,8 +10,9 @@
 #include<fcntl.h>
 #include<stdio.h>
 #include "gnl/get_next_line.h"
+#include "ft_printf/ft_printf.h"
 
-char **init_map(char **map);
+char **init_map(char **map, char *file);
 
 typedef struct s_data
 {
@@ -24,12 +25,17 @@ typedef struct s_data
 	void	*collect;
 	void	*door;
 	void	*flor;
+	void 	*win_game;
 }	t_data;
 void	print_image(t_data data);
 void	init_struct(t_data *data);
 void	destroy(t_data *data);
-void	move_right(t_data *data);
-void	move_left(t_data *data);
-void	move_up(t_data *data);
-void	move_down(t_data *data);
+int		move_horizontal(t_data *data, int sign);
+int		move_vertical(t_data *data, int sign);
+void	open_door(t_data *data);
+int		tcheck_char(char **map, char c);
+void	win_game(t_data *data);
+void	tcheck_map(char **map);
+void 	name_map(char *file);
+void	contour_map(char **map);
 #endif // !SO_LONG_H

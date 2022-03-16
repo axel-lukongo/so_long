@@ -32,9 +32,9 @@ char	*get_the_line(char **line, int size_line)
 		return (NULL);
 	}
 	if (size_line == -1)
-		size_line = ft_strlen(*line);
+		size_line = ft_strlen_gnl(*line);
 	str = ft_substr(*line, 0, size_line + 1, 0);
-	*line = ft_substr(*line, size_line + 1, ft_strlen(*line), 1);
+	*line = ft_substr(*line, size_line + 1, ft_strlen_gnl(*line), 1);
 	return (str);
 }
 
