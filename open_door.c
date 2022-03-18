@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   open_door.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/18 14:05:44 by alukongo          #+#    #+#             */
+/*   Updated: 2022/03/18 14:05:47 by alukongo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include"so_long.h"
 #include"minilibx/mlx.h"
@@ -26,7 +37,7 @@ int	tcheck_char(char **map, char c)
 			i++;
 		}
 	}
-	return(0);
+	return (0);
 }
 
 void	tcheck_diff(char *map, int width, char c)

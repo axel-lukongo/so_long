@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:26:23 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/18 12:58:00 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/18 14:08:08 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,11 @@ void	tcheck_map(char **map)
  * 
  * @param map this is my map 
  */
-void contour_map(char **map)
+void	contour_map(char **map)
 {
 	int	i;
 	int	j;
-	int width;
+	int	width;
 
 	i = 0;
 	j = 0;

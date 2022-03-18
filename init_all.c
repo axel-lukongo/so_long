@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:27:37 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/18 11:47:06 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/18 14:02:32 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,21 +25,20 @@ void	init_struct(t_data *data)
 
 	img_width = 5;
 	img_height = 5;
-	
 	data->perso = mlx_xpm_file_to_image(data->ptr_mlx,
-	"image/hero_fly.xpm", &img_width, &img_height);
+			"image/hero_fly.xpm", &img_width, &img_height);
 	data->wall = mlx_xpm_file_to_image(data->ptr_mlx,
-	"image/wall.xpm", &img_width, &img_height);
+			"image/wall.xpm", &img_width, &img_height);
 	data->collect = mlx_xpm_file_to_image(data->ptr_mlx,
-	"image/cristaux.xpm", &img_width, &img_height);
+			"image/cristaux.xpm", &img_width, &img_height);
 	data->flor = mlx_xpm_file_to_image(data->ptr_mlx,
-	"image/terre.xpm", &img_width, &img_height);
+			"image/terre.xpm", &img_width, &img_height);
 	if (tcheck_char(data->map, 'C') == 0)
 		data->door = mlx_xpm_file_to_image(data->ptr_mlx,
-		"image/door_open.xpm", &img_width, &img_height);
+				"image/door_open.xpm", &img_width, &img_height);
 	else
 	data->door = mlx_xpm_file_to_image(data->ptr_mlx,
-	"image/porte.xpm", &img_width, &img_height);
+				"image/porte.xpm", &img_width, &img_height);
 }
 
 /**
@@ -84,13 +83,13 @@ char	**init_map(char **map, char *fichier)
 	i = 0;
 	map = malloc(sizeof(char *) * nb_line);
 	fd = open("map/map.ber", O_RDONLY);
-	map[i] = get_next_line(fd); 
+	map[i] = get_next_line(fd);
 	while (map[i])
 	{
 		i++;
-		map[i] = get_next_line(fd); 
+		map[i] = get_next_line(fd);
 	}
 	tcheck_map(map);
 	contour_map(map);
-	return(map);
+	return (map);
 }

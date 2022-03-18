@@ -6,10 +6,9 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 14:31:46 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/18 12:56:26 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/18 14:08:18 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include"minilibx/mlx.h"
 #include "so_long.h"
@@ -27,7 +26,6 @@
  * @param img_height this is the height of my image
  * @param x and y is the position where i start to print in my window.
  */
- 
 void	print_image(t_data data)
 {
 	int	y;
@@ -48,12 +46,12 @@ void	print_image(t_data data)
 		else if (data.map[i][j] == 'P')
 			mlx_put_image_to_window(data.ptr_mlx, data.win, data.perso, x, y);
 		else if (data.map[i][j] == 'C')
-			mlx_put_image_to_window(data.ptr_mlx, data.win, data.collect, x, y);		
+			mlx_put_image_to_window(data.ptr_mlx, data.win, data.collect, x, y);
 		else if (data.map[i][j] == 'E')
 			mlx_put_image_to_window(data.ptr_mlx, data.win, data.door, x, y);
 		j++;
 		x += 50;
-		if(data.map[i][j] == '\n')
+		if (data.map[i][j] == '\n')
 		{
 			y += 50;
 			x = 150;
@@ -69,9 +67,10 @@ void	print_image(t_data data)
  * @param data it my struct 
  * @return int 
  */
+
 int	deal_key(int key, t_data *data)
 {
-	static int i = 0;
+	static int	i = 0;
 
 	if (key == KEY_RIGHT)
 		i += move_horizontal(data, 1);
@@ -92,14 +91,15 @@ int	deal_key(int key, t_data *data)
 	return (0);
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
+	t_data	data;
+
 	if (ac != 2)
 	{
 		ft_printf("Error\ngive me a map");
 		return (0);
 	}
-	t_data	data;
 	data.map = NULL;
 	data.ptr_mlx = mlx_init();
 	data.win = mlx_new_window(data.ptr_mlx, WIDTH, HEIGHT, "windows");
