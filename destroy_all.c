@@ -6,13 +6,18 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:27:58 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/16 12:28:01 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/18 11:49:29 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"so_long.h"
 #include"minilibx/mlx.h"
 
+/**
+ * @brief in this fonction i destroy all my image
+ * 
+ * @param data 
+ */
 void destroy(t_data *data)
 {
 	mlx_destroy_image(data->ptr_mlx, data->wall);

@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 14:31:46 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/14 15:20:52 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/18 11:26:07 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
  * @param img_height this is the height of my image
  * @param x and y is the position where i start to print in my window.
  */
-
+ 
 void	print_image(t_data data)
 {
 	int	y;
@@ -62,7 +62,13 @@ void	print_image(t_data data)
 		}
 	}
 }
-
+/**
+ * @brief this fonctions allow me to make a event according to the key what i press
+ * 
+ * @param key this is the value of my key, ex: w = 100, s = 119...
+ * @param data it my struct 
+ * @return int 
+ */
 int	deal_key(int key, t_data *data)
 {
 	static int i = 0;

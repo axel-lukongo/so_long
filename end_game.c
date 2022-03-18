@@ -6,13 +6,18 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:27:47 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/16 12:27:50 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/18 11:49:41 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"so_long.h"
 #include"minilibx/mlx.h"
 
+/**
+ * @brief when i win i want to print a win image 
+ * 
+ * @param data 
+ */
 void	win_game(t_data *data)
 {
 	//ft_putnbr(collect(data->map, 'p'));
