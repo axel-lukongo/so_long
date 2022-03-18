@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:27:37 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/18 14:02:32 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/18 16:42:20 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,11 @@ void	init_struct(t_data *data)
 	data->flor = mlx_xpm_file_to_image(data->ptr_mlx,
 			"image/terre.xpm", &img_width, &img_height);
 	if (tcheck_char(data->map, 'C') == 0)
+	{
 		data->door = mlx_xpm_file_to_image(data->ptr_mlx,
 				"image/door_open.xpm", &img_width, &img_height);
+		data->flag = 1;
+	}
 	else
 	data->door = mlx_xpm_file_to_image(data->ptr_mlx,
 				"image/porte.xpm", &img_width, &img_height);

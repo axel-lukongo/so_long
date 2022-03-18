@@ -18,7 +18,7 @@ BONUS_SRCS	=	${BONUS}
 
 OBJ	= ${SRCS:.c=.o}
 
-CFLAGS	= -g -Wall -Wextra -Werror
+CFLAGS	= -g -Wall -Werror -Wextra
 
 .c.o:
 	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}

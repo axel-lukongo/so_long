@@ -1,5 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/18 16:24:02 by alukongo          #+#    #+#             */
+/*   Updated: 2022/03/18 16:40:01 by alukongo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SO_LONG_H
-# define SO_long_h
+# define SO_LONG_H
 # define WIDTH 1200
 # define HEIGHT 450
 # define KEY_LEFT 97
@@ -7,12 +19,12 @@
 # define KEY_UP 119
 # define KEY_DOWN 115
 # define ESC 65307
-#include<fcntl.h>
-#include<stdio.h>
-#include "gnl/get_next_line.h"
-#include "ft_printf/ft_printf.h"
+# include <fcntl.h>
+# include <stdio.h>
+# include "gnl/get_next_line.h"
+# include "ft_printf/ft_printf.h"
 
-char **init_map(char **map, char *file);
+char	**init_map(char **map, char *file);
 
 typedef struct s_data
 {
@@ -25,7 +37,8 @@ typedef struct s_data
 	void	*collect;
 	void	*door;
 	void	*flor;
-	void 	*win_game;
+	void	*win_game;
+	int		flag;
 }	t_data;
 void	print_image(t_data data);
 void	init_struct(t_data *data);
@@ -36,7 +49,8 @@ void	open_door(t_data *data);
 int		tcheck_char(char **map, char c);
 void	win_game(t_data *data);
 void	tcheck_map(char **map);
-void 	name_map(char *file);
+void	name_map(char *file);
 void	contour_map(char **map);
-void	tcheck_diff(char *map, int width,char c);
+void	tcheck_diff(char *map, int width, char c);
+void	free_map(t_data *data);
 #endif // !SO_LONG_H

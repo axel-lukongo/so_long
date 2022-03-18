@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 14:31:46 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/18 14:08:18 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/18 16:53:45 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,37 @@
 #include<stdio.h>
 
 /**
- * @brief this fonction allow me to put image in the window,
-   while i don't find the '\n' or '\0', i check if the value in my map = 1 or 0.
-   if is 1 i print a wall else i print the flor and i step in next case of map.
- * @param map: is a line of my map
- * @param data: this strctur contain the element who i gone use during all my project,
-  line the pointer to the mlx, the pointer to my window...
- * @param img_width this is the width of my image
- * @param img_height this is the height of my image
- * @param x and y is the position where i start to print in my window.
+ * @brief in this fonction i put image to the window depending to the char in c
+ * 
+ * @param data 
+ * @param c 
+ * @param x the position in 
+ * @param y 
+ */
+void	put_in_window(t_data data, char c, int x, int y)
+{
+	if (c == '1')
+		mlx_put_image_to_window(data.ptr_mlx, data.win, data.wall, x, y);
+	else if (c == '0')
+		mlx_put_image_to_window(data.ptr_mlx, data.win, data.flor, x, y);
+	else if (c == 'P')
+		mlx_put_image_to_window(data.ptr_mlx, data.win, data.perso, x, y);
+	else if (c == 'C')
+		mlx_put_image_to_window(data.ptr_mlx, data.win, data.collect, x, y);
+	else if (c == 'E')
+		mlx_put_image_to_window(data.ptr_mlx, data.win, data.door, x, y);
+}
+
+/**
+ * @brief this fonction allow me to put image in the window. base in my map.
+   i check if the value in the case of my map.
+   if is 1 i print a wall 0 it the flor and...
+ *
+ * @param map: is my map
+ * @param data: this structur contain the element of my project:
+  the pointer to the mlx, the pointer to my window...
+  
+ * @param x and y is the position where i print image in my window.
  */
 void	print_image(t_data data)
 {
@@ -33,35 +55,27 @@ void	print_image(t_data data)
 	int	i;
 	int	j;
 
-	y = 100;
+	y = 20;
 	j = 0;
-	x = 150;
+	x = 20;
 	i = 0;
 	while (data.map[i][j] != '\0')
 	{
-		if (data.map[i][j] == '1')
-			mlx_put_image_to_window(data.ptr_mlx, data.win, data.wall, x, y);
-		else if (data.map[i][j] == '0')
-			mlx_put_image_to_window(data.ptr_mlx, data.win, data.flor, x, y);
-		else if (data.map[i][j] == 'P')
-			mlx_put_image_to_window(data.ptr_mlx, data.win, data.perso, x, y);
-		else if (data.map[i][j] == 'C')
-			mlx_put_image_to_window(data.ptr_mlx, data.win, data.collect, x, y);
-		else if (data.map[i][j] == 'E')
-			mlx_put_image_to_window(data.ptr_mlx, data.win, data.door, x, y);
+		put_in_window(data, data.map[i][j], x, y);
 		j++;
 		x += 50;
 		if (data.map[i][j] == '\n')
 		{
 			y += 50;
-			x = 150;
+			x = 20;
 			i++;
 			j = 0;
 		}
 	}
 }
 /**
- * @brief this fonctions allow me to make a event according to the key what i press
+ * @brief this fonctions allow me to make a event according to
+    the key what i press
  * 
  * @param key this is the value of my key, ex: w = 100, s = 119...
  * @param data it my struct 
@@ -83,6 +97,7 @@ int	deal_key(int key, t_data *data)
 	else if (key == ESC)
 	{
 		destroy(data);
+		free_map(data);
 		mlx_destroy_display(data->ptr_mlx);
 		mlx_destroy_window(data->ptr_mlx, data->win);
 	}
