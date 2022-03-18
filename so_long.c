@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 14:31:46 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/18 11:26:07 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/18 12:56:26 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int main(int ac, char **av)
 {
 	if (ac != 2)
 	{
-		ft_printf("give me a map");
+		ft_printf("Error\ngive me a map");
 		return (0);
 	}
 	t_data	data;

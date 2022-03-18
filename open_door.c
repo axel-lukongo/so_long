@@ -38,7 +38,7 @@ void	tcheck_diff(char *map, int width, char c)
 	{
 		if (map[i] != c)
 		{
-			ft_printf("wall ain't close by a wall");
+			ft_printf("Error\nwall ain't close by a wall");
 			exit (0);
 		}
 		i++;

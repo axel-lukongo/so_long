@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:26:23 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/18 12:48:50 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/18 12:58:00 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,22 @@ void	tcheck_map(char **map)
 {
 	if (tcheck_char(map, '1') == 0)
 	{
-		ft_printf("must have a wall");
+		ft_printf("Error\nmust have a wall");
 		exit(0);
 	}
 	if (tcheck_char(map, 'E') == 0)
 	{
-		ft_printf("must have a exit");
+		ft_printf("Error\nmust have a exit");
 		exit(0);
 	}
 	if (tcheck_char(map, 'C') == 0)
 	{
-		ft_printf("must have collectable");
+		ft_printf("Error\nmust have collectable");
 		exit(0);
 	}
 	if (tcheck_char(map, 'P') == 0)
 	{
-		ft_printf("must have a personage");
+		ft_printf("Error\nmust have a personage");
 		exit(0);
 	}
 }
@@ -65,7 +65,7 @@ void contour_map(char **map)
 		{
 			if (map[i][0] != '1' || map[i][j - 1] != '1' || j > width)
 			{
-				ft_printf("map ain't close by a wall");
+				ft_printf("Error\nmap ain't close by a wall");
 				exit(1);
 			}
 			i++;
@@ -95,6 +95,6 @@ void	name_map(char *file)
 							return ;
 		i++;
 	}
-	ft_printf("file must finish by .ber");
+	ft_printf("Error\nfile must finish by .ber");
 	exit (1);
 }
