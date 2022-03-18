@@ -8,7 +8,7 @@
  * @param c the char who i want look in my map
  * @return int 
  */
-int tcheck_char(char **map, char c)
+int	tcheck_char(char **map, char c)
 {
 	int	i;
 	int	j;
@@ -27,4 +27,20 @@ int tcheck_char(char **map, char c)
 		}
 	}
 	return(0);
+}
+
+void	tcheck_diff(char *map, int width, char c)
+{
+	int	i;
+
+	i = 0;
+	while (i < width - 1)
+	{
+		if (map[i] != c)
+		{
+			ft_printf("wall ain't close by a wall");
+			exit (0);
+		}
+		i++;
+	}
 }

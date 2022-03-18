@@ -38,4 +38,5 @@ void	win_game(t_data *data);
 void	tcheck_map(char **map);
 void 	name_map(char *file);
 void	contour_map(char **map);
+void	tcheck_diff(char *map, int width,char c);
 #endif // !SO_LONG_H

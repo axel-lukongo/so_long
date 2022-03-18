@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:26:23 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/16 12:26:28 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/18 12:40:11 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void contour_map(char **map)
 	i = 0;
 	j = 0;
 	width = ft_strlen(map[0]);
+	tcheck_diff(map[0], width, '1');
 	while (map[i][j])
 	{
 		j++;
@@ -64,7 +65,7 @@ void contour_map(char **map)
 		{
 			if (map[i][0] != '1' || map[i][j - 1] != '1' || j > width)
 			{
-				ft_printf("derniere case map = %c\n", map[i][j-1]);
+				ft_printf("derniere case map = %c\n", map[i][j - 1]);
 				ft_printf("map ain't close by a wall");
 				exit(1);
 			}
@@ -72,6 +73,7 @@ void contour_map(char **map)
 			j = 0;
 		}
 	}
+	tcheck_diff(map[i], width, '1');
 }
 
 /**
