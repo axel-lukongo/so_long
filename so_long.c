@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 14:31:46 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/18 16:53:45 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/18 16:20:12 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ int	deal_key(int key, t_data *data)
 		mlx_destroy_window(data->ptr_mlx, data->win);
 	}
 	ft_printf("%d\n", i);
-	win_game(data);
+	//win_game(data);
 	return (0);
 }
 
