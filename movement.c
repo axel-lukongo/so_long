@@ -6,12 +6,14 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:27:25 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/18 17:33:31 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/21 14:49:09 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"so_long.h"
 #include"minilibx/mlx.h"
+
+static int	g_count = 0;
 
 /**
  * @brief in this fonction i shift the personnage in horizontal sens
@@ -30,6 +32,8 @@ void	shift_horizontal(t_data *data, int x, int y, int n)
 		destroy(data);
 		init_struct(data);
 		print_image(*data);
+		g_count += 1;
+		ft_printf("%d\n", g_count);
 	}
 	if (data->map[x][y + n] == 'E' && data->flag == 1)
 		win_game(data);
@@ -83,6 +87,8 @@ void	shift_vertical(t_data *data, int x, int y, int n)
 		destroy(data);
 		init_struct(data);
 		print_image(*data);
+		g_count += 1;
+		ft_printf("%d\n", g_count);
 	}
 	if (data->map[x + n][y] == 'E' && data->flag == 1)
 		win_game(data);
