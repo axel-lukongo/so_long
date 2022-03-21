@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 14:31:46 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/21 14:39:14 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/21 15:59:26 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void	print_image(t_data data)
 		}
 	}
 }
+
 /**
  * @brief this fonctions allow me to make a event according to
     the key what i press
@@ -81,27 +82,21 @@ void	print_image(t_data data)
  * @param data it my struct 
  * @return int 
  */
-
 int	deal_key(int key, t_data *data)
 {
-	static int	i = 0;
-
 	if (key == KEY_RIGHT)
-		i += move_horizontal(data, 1);
+		move_horizontal(data, 1);
 	else if (key == KEY_LEFT)
-		i += move_horizontal(data, -1);
+		move_horizontal(data, -1);
 	else if (key == KEY_UP)
-		i += move_vertical(data, -1);
+		move_vertical(data, -1);
 	else if (key == KEY_DOWN)
-		i += move_vertical(data, 1);
+		move_vertical(data, 1);
 	else if (key == ESC)
 	{
-		destroy(data);
-		free_map(data);
-		mlx_destroy_display(data->ptr_mlx);
 		mlx_destroy_window(data->ptr_mlx, data->win);
+		exit(1);
 	}
-	//ft_printf("%d\n", i);
 	return (0);
 }
 
