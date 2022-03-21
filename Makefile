@@ -13,6 +13,7 @@ SRCS = so_long.c\
 		open_door.c\
 		end_game.c\
 		tcheck_map.c\
+		game_event.c\
 
 BONUS_SRCS	=	${BONUS}
 

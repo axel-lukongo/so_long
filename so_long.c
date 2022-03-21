@@ -6,13 +6,11 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 14:31:46 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/21 18:39:06 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/21 19:07:04 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"minilibx/mlx.h"
 #include "so_long.h"
-#include "gnl/get_next_line.h"
 #include<stdio.h>
 
 /**
@@ -74,37 +72,6 @@ void	print_image(t_data data)
 	}
 }
 
-/**
- * @brief this fonctions allow me to make a event according to
-    the key what i press
- * 
- * @param key this is the value of my key, ex: w = 100, s = 119...
- * @param data it my struct 
- * @return int 
- */
-int	deal_key(int key, t_data *data)
-{
-	if (key == KEY_RIGHT)
-		move_horizontal(data, 1);
-	else if (key == KEY_LEFT)
-		move_horizontal(data, -1);
-	else if (key == KEY_UP)
-		move_vertical(data, -1);
-	else if (key == KEY_DOWN)
-		move_vertical(data, 1);
-	else if (key == ESC)
-	{
-		close_my_game(data);
-	}
-	return (0);
-}
-
-int	mouse_event(t_data *data)
-{
-	close_my_game(data);
-	return (1);
-}
-
 int	main(int ac, char **av)
 {
 	t_data	data;
@@ -120,7 +87,7 @@ int	main(int ac, char **av)
 	data.map = init_map(data.map, av[1]);
 	init_struct(&data);
 	print_image(data);
-	mlx_key_hook(data.win, deal_key, &data);
+	mlx_key_hook(data.win, key_event, &data);
 	mlx_hook(data.win, 17, 1L << 17, mouse_event, &data);
 	mlx_loop(data.ptr_mlx);
 }
