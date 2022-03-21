@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 14:31:46 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/21 15:59:26 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/21 18:39:06 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,10 +94,15 @@ int	deal_key(int key, t_data *data)
 		move_vertical(data, 1);
 	else if (key == ESC)
 	{
-		mlx_destroy_window(data->ptr_mlx, data->win);
-		exit(1);
+		close_my_game(data);
 	}
 	return (0);
+}
+
+int	mouse_event(t_data *data)
+{
+	close_my_game(data);
+	return (1);
 }
 
 int	main(int ac, char **av)
@@ -116,5 +121,6 @@ int	main(int ac, char **av)
 	init_struct(&data);
 	print_image(data);
 	mlx_key_hook(data.win, deal_key, &data);
+	mlx_hook(data.win, 17, 1L << 17, mouse_event, &data);
 	mlx_loop(data.ptr_mlx);
 }

@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 16:24:02 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/18 16:40:01 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/21 18:39:13 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,5 @@ void	name_map(char *file);
 void	contour_map(char **map);
 void	tcheck_diff(char *map, int width, char c);
 void	free_map(t_data *data);
+void	close_my_game(t_data *data);
 #endif // !SO_LONG_H
