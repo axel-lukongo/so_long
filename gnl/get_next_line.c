@@ -5,22 +5,16 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/22 16:19:07 by alukongo          #+#    #+#             */
-/*   Updated: 2022/01/28 14:42:20 by alukongo         ###   ########.fr       */
+/*   Created: 2022/01/21 14:39:42 by alukongo          #+#    #+#             */
+/*   Updated: 2022/03/22 15:29:29 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-/*
-here i check if my line exist else i return null.
-line 32) this condition is only for don't have a negative value in size_line
-line 35) i copy the char from line to 0 until the \n to the str
-line 36) i copy the char from line to size_line in line, and i free the old address of line
-*/
-char	*get_the_line(char **line, int size_line)
+char	*get_the_line(char **line, int end_line)
 {
-	char	*str;
+	char	*s;
 
 	if (!*line || !**line)
 	{
@@ -31,38 +25,36 @@ char	*get_the_line(char **line, int size_line)
 		}
 		return (NULL);
 	}
-	if (size_line == -1)
-		size_line = ft_strlen_gnl(*line);
-	str = ft_substr(*line, 0, size_line + 1, 0);
-	*line = ft_substr(*line, size_line + 1, ft_strlen_gnl(*line), 1);
-	return (str);
+	if (end_line == -1)
+		end_line = ft_strlen_gnl(*line);
+	s = ft_substr(*line, 0, end_line + 1, 0);
+	*line = ft_substr(*line, end_line + 1, ft_strlen_gnl(*line), 1);
+	return (s);
 }
 
-/*
-first i check of the fd, BUFFER_SIZE, and read
-line 46) i check the number of char before the \n in my line otherwise line = -1 and i read.
-in my loop while there isn't \n in line and ret > 0, i joint the buffer in my line and i read again.
-finaly if i find a \n or my ret < 0 i exit my loop and i return get_the line.
-*/
 char	*get_next_line(int fd)
 {
-	char		buf[BUFFER_SIZE];
+	char		*buf;
 	static char	*line;
-	int			size_line;
-	int			ret;
+	int			end_line;
+	int			result;
 
 	if (fd < 0 || BUFFER_SIZE < 1 || read(fd, 0, 0) < 0)
 		return (NULL);
-	size_line = is_newline(line);
-	if (size_line == -1)
-		ret = read(fd, buf, BUFFER_SIZE);
-	while (size_line == -1 && ret > 0)
+	buf = malloc(sizeof(char) * BUFFER_SIZE + 1);
+	if (!buf)
+		return (NULL);
+	end_line = ft_find_newline(line);
+	if (end_line == -1)
+		result = read(fd, buf, BUFFER_SIZE);
+	while (end_line == -1 && result > 0)
 	{
-		buf[ret] = '\0';
+		buf[result] = '\0';
 		line = ft_strjoin(line, buf);
-		size_line = is_newline(line);
-		if (size_line == -1)
-			ret = read(fd, buf, BUFFER_SIZE);
+		end_line = ft_find_newline(line);
+		if (end_line == -1)
+			result = read(fd, buf, BUFFER_SIZE);
 	}
-	return (get_the_line(&line, size_line));
+	free(buf);
+	return (get_the_line(&line, end_line));
 }

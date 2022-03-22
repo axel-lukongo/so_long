@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:27:37 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/18 16:42:20 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/22 16:32:12 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	count_line(char *file)
 		str = get_next_line(fd);
 	}
 	close(fd);
-	return (nb_line);
+	return (nb_line + 1);
 }
 
 /**
@@ -81,11 +81,11 @@ char	**init_map(char **map, char *fichier)
 	int	fd;
 	int	nb_line;
 
-	nb_line = count_line(fichier);
 	name_map(fichier);
+	nb_line = count_line(fichier);
 	i = 0;
-	map = malloc(sizeof(char *) * nb_line);
-	fd = open("map/map.ber", O_RDONLY);
+	map = malloc(sizeof(char *) * nb_line + 1);
+	fd = open(fichier, O_RDONLY);
 	map[i] = get_next_line(fd);
 	while (map[i])
 	{

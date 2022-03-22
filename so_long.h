@@ -6,13 +6,13 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 16:24:02 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/21 19:05:04 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/22 16:56:15 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
-# define WIDTH 1200
+# define WIDTH 1300
 # define HEIGHT 450
 # define KEY_LEFT 97
 # define KEY_RIGHT 100
@@ -32,7 +32,6 @@ typedef struct s_data
 	void	*ptr_mlx;
 	void	*win;
 	char	**map;
-	void	*img;
 	void	*perso;
 	void	*wall;
 	void	*collect;

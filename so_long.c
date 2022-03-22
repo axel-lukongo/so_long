@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 14:31:46 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/22 00:58:45 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/22 16:38:08 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 /**
  * @brief in this fonction i put image to the window depending to the char in c
-* 
+ *
  * @param data 
  * @param c 
  * @param x the position in 
