@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 19:05:50 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/21 19:06:37 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/22 04:16:08 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
  * @param key this is the value of my key, ex: w = 100, s = 119...
  * @param data it my struct 
  * @return int 
- */
+*/
 int	key_event(int key, t_data *data)
 {
 	if (key == KEY_RIGHT)

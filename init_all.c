@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:27:37 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/22 16:32:12 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/23 16:55:23 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	init_struct(t_data *data)
  * @param file this is where my map file it storage
  * @return int 
  */
-int	count_line(char *file)
+int	count_line(char *file, t_data *data)
 {
 	int		fd;
 	int		nb_line;
@@ -60,39 +60,52 @@ int	count_line(char *file)
 	nb_line = 0;
 	fd = open(file, O_RDONLY);
 	str = get_next_line(fd);
+	data->col = ft_strlen(str);
 	while (str)
 	{
 		nb_line++;
+		free(str);
 		str = get_next_line(fd);
 	}
+		//free(str);
+	
 	close(fd);
+	data->row = nb_line;
 	return (nb_line + 1);
 }
 
 /**
- * @brief in this fonction i initialise my map
+ * @brief in this fonction i tcheck the name of my file,
+	initialise my map
+	and i tcheck the map at the end;
  * 
  * @param map this is the map who i want initialise
  * @return char** i return the my map
  */
-char	**init_map(char **map, char *fichier)
+
+int	init_map(t_data *data,char *fichier)
 {
 	int	i;
 	int	fd;
 	int	nb_line;
 
-	name_map(fichier);
-	nb_line = count_line(fichier);
 	i = 0;
-	map = malloc(sizeof(char *) * nb_line + 1);
+	nb_line = count_line(fichier, data);
+	tcheck_name_map(fichier);
 	fd = open(fichier, O_RDONLY);
-	map[i] = get_next_line(fd);
-	while (map[i])
+	data->map = malloc(sizeof(char *) * nb_line + 1);
+	if (!data->map || fd < 0)
+	{
+		ft_printf("Error\n verify init_map\n");
+		exit(1);
+	}
+	data->map[i] = get_next_line(fd);
+	while (data->map[i])
 	{
 		i++;
-		map[i] = get_next_line(fd);
+		data->map[i] = get_next_line(fd);
 	}
-	tcheck_map(map);
-	contour_map(map);
-	return (map);
+	tcheck_element_map(data->map);
+	tcheck_contour_map(data->map);
+	return (1);
 }

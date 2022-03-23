@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 16:24:02 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/22 16:56:15 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/23 16:54:20 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@
 # include "ft_printf/ft_printf.h"
 # include"minilibx/mlx.h"
 
-char	**init_map(char **map, char *file);
 
 typedef struct s_data
 {
@@ -39,7 +38,10 @@ typedef struct s_data
 	void	*flor;
 	void	*win_game;
 	int		flag;
+	int		row;
+	int		col;
 }	t_data;
+int		init_map(t_data *data,char *file);
 void	print_image(t_data data);
 void	init_struct(t_data *data);
 void	destroy(t_data *data);
@@ -48,9 +50,9 @@ int		move_vertical(t_data *data, int sign);
 void	open_door(t_data *data);
 int		tcheck_char(char **map, char c);
 void	win_game(t_data *data);
-void	tcheck_map(char **map);
-void	name_map(char *file);
-void	contour_map(char **map);
+void	tcheck_element_map(char **map);
+void	tcheck_name_map(char *file);
+void	tcheck_contour_map(char **map);
 void	tcheck_diff(char *map, int width, char c);
 void	free_map(t_data *data);
 void	close_my_game(t_data *data);
