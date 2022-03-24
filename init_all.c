@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:27:37 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/23 16:55:23 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/24 14:10:27 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,13 @@ void	init_struct(t_data *data)
 }
 
 /**
- * @brief in this fonctions i read the file where my map he is, and i count the 
+ * @brief in this fonctions i read all the file where my map it is, and i count the 
    number of line, and i will use it for malloc my tab
  * 
  * @param file this is where my map file it storage
  * @return int 
  */
-int	count_line(char *file, t_data *data)
+void	count_line(char *file, t_data *data)
 {
 	int		fd;
 	int		nb_line;
@@ -67,38 +67,47 @@ int	count_line(char *file, t_data *data)
 		free(str);
 		str = get_next_line(fd);
 	}
-		//free(str);
-	
+	free(str);
 	close(fd);
-	data->row = nb_line;
-	return (nb_line + 1);
+	data->row = nb_line + 1;
 }
 
 /**
- * @brief in this fonction i tcheck the name of my file,
-	initialise my map
-	and i tcheck the map at the end;
+ * @brief this fonction allow me to allocat memory for ma variable map in my struct
  * 
- * @param map this is the map who i want initialise
- * @return char** i return the my map
+ * @param data 
+ * @param file it the file where the map had been write
+ * @param fd 
  */
-
-int	init_map(t_data *data,char *fichier)
+void allocate_map(t_data *data, char *file, int fd)
 {
-	int	i;
-	int	fd;
-	int	nb_line;
-
-	i = 0;
-	nb_line = count_line(fichier, data);
-	tcheck_name_map(fichier);
-	fd = open(fichier, O_RDONLY);
-	data->map = malloc(sizeof(char *) * nb_line + 1);
+	count_line(file, data);
+	data->map = malloc(sizeof(char *) * data->row + 1);
 	if (!data->map || fd < 0)
 	{
 		ft_printf("Error\n verify init_map\n");
 		exit(1);
 	}
+	
+}
+
+/**
+ * @brief in this fonction i tcheck the name of my file,
+	initialise my map
+	and i check the map at the end;
+ * 
+ * @param map this is the map who i want initialise
+ * @return char** i return the my map
+ */
+int	init_map(t_data *data,char *file)
+{
+	int	i;
+	int	fd;
+
+	i = 0;
+	tcheck_name_map(file);
+	fd = open(file, O_RDONLY);
+	allocate_map(data, file,fd);
 	data->map[i] = get_next_line(fd);
 	while (data->map[i])
 	{
