@@ -6,15 +6,14 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:27:47 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/25 21:58:51 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/25 22:44:55 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"so_long.h"
-//#include"../minilibx/mlx.h"
 
 /**
- * @brief this fonction allow me to quit the game when i win,
+ * @brief this fonction allow me to quit the game after i won,
     whetever the key i press
  * 
  * @param key 
@@ -25,8 +24,12 @@ int	close_game(int key, t_data *data)
 {
 	if (key)
 	{
+		free_map(data);
+		//destroy(data);
 		mlx_destroy_image(data->ptr_mlx, data->win_game);
+		mlx_clear_window(data->ptr_mlx, data->win);
 		mlx_destroy_window(data->ptr_mlx, data->win);
+		mlx_destroy_display(data->ptr_mlx);
 		free(data->ptr_mlx);
 		exit(1);
 	}
@@ -50,6 +53,6 @@ void	win_game(t_data *data)
 	data->win_game = mlx_xpm_file_to_image(data->ptr_mlx,
 			"image/win.xpm", &img_width, &img_height);
 	mlx_put_image_to_window(data->ptr_mlx, data->win,
-		data->win_game, 500, 130);
+		data->win_game, data->col * 20, data->row * 10);
 	mlx_key_hook(data->win, close_game, data);
 }

@@ -6,12 +6,11 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 14:05:44 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/22 02:02:20 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/25 22:44:42 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"so_long.h"
-//#include"minilibx/mlx.h"
 /**
  * @brief i tcheck if i have the char in my variable c in my map
  * 

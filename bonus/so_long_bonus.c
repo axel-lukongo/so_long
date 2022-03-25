@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 14:31:46 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/22 00:58:45 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/23 18:57:54 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 /**
  * @brief in this fonction i put image to the window depending to the char in c
-* 
+ *
  * @param data 
  * @param c 
  * @param x the position in 
@@ -53,9 +53,9 @@ void	print_image(t_data data)
 	int	i;
 	int	j;
 
-	y = 20;
+	y = 0;
 	j = 0;
-	x = 20;
+	x = 0;
 	i = 0;
 	while (data.map[i][j] != '\0')
 	{
@@ -65,7 +65,7 @@ void	print_image(t_data data)
 		if (data.map[i][j] == '\n')
 		{
 			y += 50;
-			x = 20;
+			x = 0;
 			i++;
 			j = 0;
 		}
@@ -82,9 +82,9 @@ int	main(int ac, char **av)
 		return (0);
 	}
 	data.map = NULL;
+	init_map(&data, av[1]);
 	data.ptr_mlx = mlx_init();
-	data.win = mlx_new_window(data.ptr_mlx, WIDTH, HEIGHT, "windows");
-	data.map = init_map(data.map, av[1]);
+	data.win = mlx_new_window(data.ptr_mlx, data.col*50, data.row*50 , "windows");
 	init_struct(&data);
 	print_image(data);
 	mlx_key_hook(data.win, key_event, &data);

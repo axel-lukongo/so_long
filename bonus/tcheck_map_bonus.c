@@ -6,18 +6,17 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:26:23 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/22 02:02:51 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/25 22:44:36 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"so_long.h"
-//#include"minilibx/mlx.h"
 /**
  * @brief in this fonction i tcheck is i have at least one hero,
            one exit, one collectable
  * @param map 
  */
-void	tcheck_map(char **map)
+void	tcheck_element_map(char **map)
 {
 	if (tcheck_char(map, '1') == 0)
 	{
@@ -48,7 +47,7 @@ void	tcheck_map(char **map)
  * 
  * @param map this is my map 
  */
-void	contour_map(char **map)
+void	tcheck_contour_map(char **map)
 {
 	int	i;
 	int	j;
@@ -80,7 +79,7 @@ void	contour_map(char **map)
  * 
  * @param file this is the name of the file where i store my map
  */
-void	name_map(char *file)
+void	tcheck_name_map(char *file)
 {
 	int	i;
 

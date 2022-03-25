@@ -6,12 +6,11 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:27:37 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/22 02:02:30 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/25 22:44:50 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"so_long.h"
-//#include"minilibx/mlx.h"
 
 /**
  * @brief i initialize all my variable in my structure
@@ -45,13 +44,13 @@ void	init_struct(t_data *data)
 }
 
 /**
- * @brief in this fonctions i read the file where my map he is, and i count the 
+ * @brief in this fonctions i read all the file where my map it is, and i count the 
    number of line, and i will use it for malloc my tab
  * 
  * @param file this is where my map file it storage
  * @return int 
  */
-int	count_line(char *file)
+void	count_line(char *file, t_data *data)
 {
 	int		fd;
 	int		nb_line;
@@ -60,39 +59,61 @@ int	count_line(char *file)
 	nb_line = 0;
 	fd = open(file, O_RDONLY);
 	str = get_next_line(fd);
+	data->col = ft_strlen(str);
 	while (str)
 	{
 		nb_line++;
+		free(str);
 		str = get_next_line(fd);
 	}
+	free(str);
 	close(fd);
-	return (nb_line);
+	data->row = nb_line + 1;
 }
 
 /**
- * @brief in this fonction i initialise my map
+ * @brief this fonction allow me to allocat memory for ma variable map in my struct
+ * 
+ * @param data 
+ * @param file it the file where the map had been write
+ * @param fd 
+ */
+void allocate_map(t_data *data, char *file, int fd)
+{
+	count_line(file, data);
+	data->map = malloc(sizeof(char *) * data->row + 1);
+	if (!data->map || fd < 0)
+	{
+		ft_printf("Error\n verify init_map\n");
+		exit(1);
+	}
+	
+}
+
+/**
+ * @brief in this fonction i tcheck the name of my file,
+	initialise my map
+	and i check the map at the end;
  * 
  * @param map this is the map who i want initialise
  * @return char** i return the my map
  */
-char	**init_map(char **map, char *fichier)
+int	init_map(t_data *data,char *file)
 {
 	int	i;
 	int	fd;
-	int	nb_line;
 
-	nb_line = count_line(fichier);
-	name_map(fichier);
 	i = 0;
-	map = malloc(sizeof(char *) * nb_line);
-	fd = open("map/map.ber", O_RDONLY);
-	map[i] = get_next_line(fd);
-	while (map[i])
+	tcheck_name_map(file);
+	fd = open(file, O_RDONLY);
+	allocate_map(data, file,fd);
+	data->map[i] = get_next_line(fd);
+	while (data->map[i])
 	{
 		i++;
-		map[i] = get_next_line(fd);
+		data->map[i] = get_next_line(fd);
 	}
-	tcheck_map(map);
-	contour_map(map);
-	return (map);
+	tcheck_element_map(data->map);
+	tcheck_contour_map(data->map);
+	return (1);
 }

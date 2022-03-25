@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 19:05:50 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/21 19:06:37 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/25 22:11:07 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
  * @param key this is the value of my key, ex: w = 100, s = 119...
  * @param data it my struct 
  * @return int 
- */
+*/
 int	key_event(int key, t_data *data)
 {
 	if (key == KEY_RIGHT)
@@ -35,7 +35,7 @@ int	key_event(int key, t_data *data)
 }
 
 /**
- * @brief this fonction it for close my window with the cross
+ * @brief this fonction it for close my window with the cross properly
  * 
  * @param data 
  * @return int 

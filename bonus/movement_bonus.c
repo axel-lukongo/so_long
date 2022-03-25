@@ -6,12 +6,11 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:27:25 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/22 02:02:26 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/25 22:44:47 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"so_long.h"
-//#include"minilibx/mlx.h"
 
 static int	g_count = 0;
 
