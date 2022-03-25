@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:27:47 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/23 18:04:38 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/25 22:05:33 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include"minilibx/mlx.h"
 
 /**
- * @brief this fonction allow me to quit the game when i win,
+ * @brief this fonction allow me to quit the game after i won,
     whetever the key i press
  * 
  * @param key 
@@ -25,7 +25,13 @@ int	close_game(int key, t_data *data)
 {
 	if (key)
 	{
+		free_map(data);
+		//destroy(data);
+		mlx_destroy_image(data->ptr_mlx, data->win_game);
+		mlx_clear_window(data->ptr_mlx, data->win);
 		mlx_destroy_window(data->ptr_mlx, data->win);
+		mlx_destroy_display(data->ptr_mlx);
+		free(data->ptr_mlx);
 		exit(1);
 	}
 	return (1);

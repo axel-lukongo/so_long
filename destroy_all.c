@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:27:58 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/25 21:41:20 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/25 22:06:30 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void	free_map(t_data *data)
 	while (data->map[i])
 	{
 		free(data->map[i]);
-		//data->map[i] = NULL;
 		i++;
 	}
 	free(data->map);

@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:27:47 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/22 02:02:37 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/25 21:58:51 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@ int	close_game(int key, t_data *data)
 {
 	if (key)
 	{
+		mlx_destroy_image(data->ptr_mlx, data->win_game);
 		mlx_destroy_window(data->ptr_mlx, data->win);
+		free(data->ptr_mlx);
 		exit(1);
 	}
 	return (1);
