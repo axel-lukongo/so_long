@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   open_door.c                                        :+:      :+:    :+:   */
+/*   tcheck_contents.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 14:05:44 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/23 15:13:58 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/26 02:48:54 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,20 @@ int	tcheck_char(char **map, char c)
 	return (0);
 }
 
-void	tcheck_diff(char *map, int width, char c)
+/**
+ * @brief in this fonction function i tcheck if the 
+    line have the same length than the first line
+ * 
+ * @param map 
+ * @param width 
+ * @param c 
+ */
+void	tcheck_diff(char *map, int length, char c)
 {
 	int	i;
 
 	i = 0;
-	while (i < width - 1)
+	while (i < length - 1)
 	{
 		if (map[i] != c)
 		{

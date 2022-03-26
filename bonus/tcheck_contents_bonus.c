@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   open_door_bonus.c                                  :+:      :+:    :+:   */
+/*   tcheck_contents_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 14:05:44 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/26 02:06:01 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/26 02:50:05 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,12 @@ int	tcheck_char(char **map, char c)
 	return (0);
 }
 
-void	tcheck_diff(char *map, int width, char c)
+void	tcheck_diff(char *map, int length, char c)
 {
 	int	i;
 
 	i = 0;
-	while (i < width - 1)
+	while (i < length - 1)
 	{
 		if (map[i] != c)
 		{

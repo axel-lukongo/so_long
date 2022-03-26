@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:27:58 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/26 02:58:01 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/26 02:41:22 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,6 @@ void	close_my_game(t_data *data)
 	destroy(data);
 	mlx_clear_window(data->ptr_mlx, data->win);
 	mlx_destroy_window(data->ptr_mlx, data->win);
-	mlx_destroy_display(data->ptr_mlx);
-	free(data->ptr_mlx);
-	exit(1);
-}
-
-void	error_contents(t_data *data)
-{
-	//mlx_clear_window(data->ptr_mlx, data->win);
-	//mlx_destroy_window(data->ptr_mlx, data->win);
 	mlx_destroy_display(data->ptr_mlx);
 	free(data->ptr_mlx);
 	exit(1);
