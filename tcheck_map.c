@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:26:23 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/23 16:01:33 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/26 03:00:25 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,29 @@
            one exit, one collectable
  * @param map 
  */
-void	tcheck_element_map(char **map)
+void	tcheck_element_map(char **map, t_data *data)
 {
 	if (tcheck_char(map, '1') == 0)
 	{
+		free_map(data);
 		ft_printf("Error\nmust have a wall");
 		exit(0);
 	}
 	if (tcheck_char(map, 'E') == 0)
 	{
+		free_map(data);
 		ft_printf("Error\nmust have a exit");
 		exit(0);
 	}
 	if (tcheck_char(map, 'C') == 0)
 	{
-		ft_printf("Error\nmust have collectable");
+		free_map(data);
+	ft_printf("Error\nmust have collectable");
 		exit(0);
 	}
 	if (tcheck_char(map, 'P') == 0)
 	{
+		free_map(data);
 		ft_printf("Error\nmust have a personage");
 		exit(0);
 	}
@@ -48,7 +52,7 @@ void	tcheck_element_map(char **map)
  * 
  * @param map this is my map 
  */
-void	tcheck_contour_map(char **map)
+void	tcheck_contour_map(char **map, t_data *data)
 {
 	int	i;
 	int	j;
@@ -65,6 +69,7 @@ void	tcheck_contour_map(char **map)
 		{
 			if (map[i][0] != '1' || map[i][j - 1] != '1' || j > width)
 			{
+				free_map(data);
 				ft_printf("Error\nmap ain't close by a wall");
 				exit(1);
 			}
@@ -80,7 +85,7 @@ void	tcheck_contour_map(char **map)
  * 
  * @param file this is the name of the file where i store my map
  */
-void	tcheck_name_map(char *file)
+void	tcheck_name_map(char *file, t_data *data)
 {
 	int	i;
 
@@ -95,6 +100,7 @@ void	tcheck_name_map(char *file)
 							return ;
 		i++;
 	}
+	free_map(data);
 	ft_printf("Error\nfile must finish by .ber");
 	exit (1);
 }

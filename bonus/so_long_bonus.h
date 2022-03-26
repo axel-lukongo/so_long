@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 16:24:02 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/25 23:21:52 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/26 02:25:33 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # define ESC 65307
 # include <fcntl.h>
 # include <stdio.h>
-# include "gnl/get_next_line.h"
-# include "ft_printf/ft_printf.h"
+# include "../bonus/gnl_bonus/get_next_line.h"
+# include "../bonus/ft_printf_bonus/ft_printf.h"
 # include"../minilibx/mlx.h"
 
 

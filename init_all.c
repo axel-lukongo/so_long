@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:27:37 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/25 23:15:17 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/26 02:38:03 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ int	init_map(t_data *data,char *file)
 	int	fd;
 
 	i = 0;
-	tcheck_name_map(file);
+	tcheck_name_map(file, data);
 	fd = open(file, O_RDONLY);
 	allocate_map(data, file,fd);
 	data->map[i] = get_next_line(fd);
@@ -111,7 +111,7 @@ int	init_map(t_data *data,char *file)
 		i++;
 		data->map[i] = get_next_line(fd);
 	}
-	tcheck_element_map(data->map);
-	tcheck_contour_map(data->map);
+	tcheck_element_map(data->map, data);
+	tcheck_contour_map(data->map, data);
 	return (1);
 }
