@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:27:25 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/26 13:12:35 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/26 13:34:44 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ static int	g_count = 0;
  * @param x my abcisse
  * @param y my hordinate
  * @param n i use this variable for move forward or rearward, it can be 1 or -1
+ * if n = 1 i will go forward, else i go rearward.
  */
 void	shift_horizontal(t_data *data, int x, int y, int n)
 {
