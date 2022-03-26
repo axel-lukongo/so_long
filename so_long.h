@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 16:24:02 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/26 02:49:03 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/26 02:09:10 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	open_door(t_data *data);
 int		tcheck_char(char **map, char c);
 void	win_game(t_data *data);
 void	tcheck_element_map(char **map, t_data *data);
-void	tcheck_name_map(char *file, t_data *data);
+void	tcheck_name_map(char *file);
 void	tcheck_contour_map(char **map, t_data *data);
 void	tcheck_diff(char *map, int width, char c);
 void	free_map(t_data *data);

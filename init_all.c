@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:27:37 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/26 02:38:03 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/26 02:13:16 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ void allocate_map(t_data *data, char *file, int fd)
 	data->map = malloc(sizeof(char *) * data->row + 1);
 	if (!data->map || fd < 0)
 	{
+		free(data->map);
 		ft_printf("Error\n verify init_map\n");
 		exit(1);
 	}
@@ -102,7 +103,7 @@ int	init_map(t_data *data,char *file)
 	int	fd;
 
 	i = 0;
-	tcheck_name_map(file, data);
+	tcheck_name_map(file);
 	fd = open(file, O_RDONLY);
 	allocate_map(data, file,fd);
 	data->map[i] = get_next_line(fd);

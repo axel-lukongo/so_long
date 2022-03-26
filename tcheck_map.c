@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:26:23 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/26 03:00:25 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/26 02:09:03 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	tcheck_contour_map(char **map, t_data *data)
  * 
  * @param file this is the name of the file where i store my map
  */
-void	tcheck_name_map(char *file, t_data *data)
+void	tcheck_name_map(char *file)
 {
 	int	i;
 
@@ -100,7 +100,8 @@ void	tcheck_name_map(char *file, t_data *data)
 							return ;
 		i++;
 	}
-	free_map(data);
+	//free_map(data);
+	free(file);
 	ft_printf("Error\nfile must finish by .ber");
 	exit (1);
 }
