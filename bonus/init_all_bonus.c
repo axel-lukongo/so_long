@@ -6,11 +6,14 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:27:37 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/25 22:44:50 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/26 02:13:05 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"so_long.h"
+#include"so_long_bonus.h"
+
+int		img_width;
+int		img_height;
 
 /**
  * @brief i initialize all my variable in my structure
@@ -19,28 +22,30 @@
  */
 void	init_struct(t_data *data)
 {
-	int		img_width;
-	int		img_height;
-
 	img_width = 5;
 	img_height = 5;
+	data->dragon = mlx_xpm_file_to_image(data->ptr_mlx,
+		"bonus/image_bonus/dragon.xpm", &img_width, &img_height);
 	data->perso = mlx_xpm_file_to_image(data->ptr_mlx,
-			"image/hero_fly.xpm", &img_width, &img_height);
+			"bonus/image_bonus/hero_fly.xpm", &img_width, &img_height);
 	data->wall = mlx_xpm_file_to_image(data->ptr_mlx,
-			"image/wall.xpm", &img_width, &img_height);
+			"bonus/image_bonus/wall.xpm", &img_width, &img_height);
 	data->collect = mlx_xpm_file_to_image(data->ptr_mlx,
-			"image/cristaux.xpm", &img_width, &img_height);
+			"bonus/image_bonus/cristaux.xpm", &img_width, &img_height);
 	data->flor = mlx_xpm_file_to_image(data->ptr_mlx,
-			"image/terre.xpm", &img_width, &img_height);
+			"bonus/image_bonus/terre.xpm", &img_width, &img_height);
 	if (tcheck_char(data->map, 'C') == 0)
 	{
 		data->door = mlx_xpm_file_to_image(data->ptr_mlx,
-				"image/door_open.xpm", &img_width, &img_height);
+				"bonus/image_bonus/door_open.xpm", &img_width, &img_height);
 		data->flag = 1;
 	}
 	else
-	data->door = mlx_xpm_file_to_image(data->ptr_mlx,
-				"image/porte.xpm", &img_width, &img_height);
+	{
+		data->door = mlx_xpm_file_to_image(data->ptr_mlx,
+					"bonus/image_bonus/porte.xpm", &img_width, &img_height);
+		data->flag = 0;
+	}
 }
 
 /**

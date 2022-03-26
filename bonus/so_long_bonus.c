@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   so_long_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 14:31:46 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/23 18:57:54 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/26 02:05:54 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 #include<stdio.h>
 
 /**
@@ -33,6 +33,8 @@ void	put_in_window(t_data data, char c, int x, int y)
 		mlx_put_image_to_window(data.ptr_mlx, data.win, data.collect, x, y);
 	else if (c == 'E')
 		mlx_put_image_to_window(data.ptr_mlx, data.win, data.door, x, y);
+	else if (c == 'D')
+		mlx_put_image_to_window(data.ptr_mlx, data.win, data.dragon, x, y);
 }
 
 /**

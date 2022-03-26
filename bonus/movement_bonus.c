@@ -6,11 +6,11 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:27:25 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/25 22:44:47 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/26 02:06:20 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"so_long.h"
+#include"so_long_bonus.h"
 
 static int	g_count = 0;
 
@@ -36,6 +36,8 @@ void	shift_horizontal(t_data *data, int x, int y, int n)
 	}
 	if (data->map[x][y + n] == 'E' && data->flag == 1)
 		win_game(data);
+	if (data->map[x][y + n] == 'D')
+		close_my_game(data);
 }
 
 /**
@@ -91,6 +93,8 @@ void	shift_vertical(t_data *data, int x, int y, int n)
 	}
 	if (data->map[x + n][y] == 'E' && data->flag == 1)
 		win_game(data);
+	if (data->map[x + n][y] == 'D')
+		close_my_game(data);
 }
 
 /**

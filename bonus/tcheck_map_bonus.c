@@ -6,11 +6,11 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:26:23 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/25 22:44:36 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/26 02:07:06 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"so_long.h"
+#include"so_long_bonus.h"
 /**
  * @brief in this fonction i tcheck is i have at least one hero,
            one exit, one collectable

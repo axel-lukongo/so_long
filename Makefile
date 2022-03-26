@@ -23,7 +23,7 @@ BONUS_SRC = bonus/so_long_bonus.c\
 		bonus/init_all_bonus.c\
 		bonus/destroy_all_bonus.c\
 		bonus/movement_bonus.c\
-		bonus/open_door_bonus.c\
+		bonus/tcheck_contents_bonus.c\
 		bonus/end_game_bonus.c\
 		bonus/tcheck_map_bonus.c\
 		bonus/game_event_bonus.c\

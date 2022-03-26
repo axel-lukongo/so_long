@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game_event.c                                       :+:      :+:    :+:   */
+/*   game_event_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 19:05:50 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/25 22:11:07 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/26 02:06:35 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"so_long.h"
+#include"so_long_bonus.h"
 /**
  * @brief this fonctions allow me to make a event according to
     the key what i press

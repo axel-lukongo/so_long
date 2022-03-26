@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 16:24:02 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/25 22:44:26 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/25 23:21:52 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct s_data
 	int		flag;
 	int		row;
 	int		col;
+	void	*dragon;
 }	t_data;
 int		init_map(t_data *data,char *file);
 void	print_image(t_data data);

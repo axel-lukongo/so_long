@@ -6,11 +6,11 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:27:47 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/25 22:44:55 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/26 02:06:41 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"so_long.h"
+#include"so_long_bonus.h"
 
 /**
  * @brief this fonction allow me to quit the game after i won,
