@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 14:05:44 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/26 02:48:54 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/26 13:13:24 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	tcheck_char(char **map, char c)
     line have the same length than the first line
  * 
  * @param map 
- * @param width 
+ * @param length is the length of my map
  * @param c 
  */
 void	tcheck_diff(char *map, int length, char c)

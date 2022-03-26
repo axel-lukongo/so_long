@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:27:25 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/25 23:15:47 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/26 13:12:35 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	shift_horizontal(t_data *data, int x, int y, int n)
  * 
  * @param data my strcuture 
  * @param n this the variable who allow me to increment or decrease the y
- * @return int 
+ * @return int if a return 1 it mean every thing is good else 0
  */
 int	move_horizontal(t_data *data, int n)
 {
@@ -100,7 +100,7 @@ void	shift_vertical(t_data *data, int x, int y, int n)
  * 
  * @param data my strcuture 
  * @param n this the variable who allow me to increment or decrease the x
- * @return int 
+ * @return int if a return 1 it mean every thing is good else 0
  */
 int	move_vertical(t_data *data, int n)
 {

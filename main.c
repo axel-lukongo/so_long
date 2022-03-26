@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 14:31:46 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/26 11:29:03 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/26 13:06:55 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
  *
  * @param data 
  * @param c 
- * @param x the position in 
- * @param y 
+ * @param x the position in abcisse
+ * @param y the position in ordinate
  */
 void	put_in_window(t_data data, char c, int x, int y)
 {
@@ -40,7 +40,6 @@ void	put_in_window(t_data data, char c, int x, int y)
    i check if the value in the case of my map.
    if is 1 i print a wall 0 it the flor and...
  *
- * @param map: is my map
  * @param data: this structur contain the element of my project:
   the pointer to the mlx, the pointer to my window...
   

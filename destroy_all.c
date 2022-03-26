@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:27:58 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/26 02:41:22 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/26 13:07:34 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,11 @@ void	destroy(t_data *data)
 	mlx_destroy_image(data->ptr_mlx, data->flor);
 }
 
+/**
+ * @brief in this function i free all before to close the game
+ * 
+ * @param data 
+ */
 void	close_my_game(t_data *data)
 {
 	free_map(data);

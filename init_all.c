@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:27:37 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/26 02:16:21 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/26 13:09:23 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void	init_struct(t_data *data)
    number of line, and i will use it for malloc my tab
  * 
  * @param file this is where my map file it storage
- * @return int 
  */
 void	count_line(char *file, t_data *data)
 {
@@ -95,7 +94,7 @@ void allocate_map(t_data *data, char *file, int fd)
 	and i check the map at the end;
  * 
  * @param map this is the map who i want initialise
- * @return char** i return the my map
+ * @return char** i return the map initialized
  */
 int	init_map(t_data *data,char *file)
 {
