@@ -6,7 +6,7 @@ NAME = so_long
 
 BONUS_NAME = so_long_bonus
 
-SRCS = so_long.c\
+SRCS = main.c\
 		gnl/get_next_line.c\
 		gnl/get_next_line_utils.c\
 		init_all.c\
