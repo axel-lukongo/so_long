@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 14:05:44 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/26 13:13:24 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/28 17:30:22 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,18 @@ int	tcheck_char(char **map, char c)
 
 	i = 0;
 	j = 0;
-	while (map[i][j])
+	if (map)
 	{
-		if (map[i][j] == c)
-			return (1);
-		j++;
-		if (map[i][j] == '\n')
+		while (map[i][j])
 		{
-			j = 0;
-			i++;
+			if (map[i][j] == c)
+				return (1);
+			j++;
+			if (map[i][j] == '\n')
+			{
+				j = 0;
+				i++;
+			}
 		}
 	}
 	return (0);
@@ -57,7 +60,7 @@ void	tcheck_diff(char *map, int length, char c)
 	{
 		if (map[i] != c)
 		{
-			ft_printf("Error\nwall ain't close by a wall");
+			ft_printf("Error\n you forgot a component in map");
 			exit (0);
 		}
 		i++;

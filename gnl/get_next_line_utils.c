@@ -6,12 +6,13 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 14:39:57 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/22 16:02:08 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/28 14:04:05 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <stdio.h>
+
 size_t	ft_strlen_gnl(char *str)
 {
 	size_t	i;

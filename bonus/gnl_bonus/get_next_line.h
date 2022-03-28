@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 14:40:06 by alukongo          #+#    #+#             */
-/*   Updated: 2022/01/22 16:23:39 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/28 14:03:15 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@
 # include<sys/stat.h>
 # include<fcntl.h>
 # include<stdio.h>
-#define BUFFER_SIZE 1
+# define BUFFER_SIZE 1
+
 size_t	ft_strlen_gnl(char *str);
 int		is_newline(char *str);
 char	*ft_strjoin(char *s1, char *s2);

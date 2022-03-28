@@ -6,12 +6,12 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 16:24:02 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/26 02:50:15 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/28 13:11:32 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 # define WIDTH 1300
 # define HEIGHT 450
 # define KEY_LEFT 97
@@ -24,7 +24,6 @@
 # include "../bonus/gnl_bonus/get_next_line.h"
 # include "../bonus/ft_printf_bonus/ft_printf.h"
 # include"../minilibx/mlx.h"
-
 
 typedef struct s_data
 {
@@ -42,7 +41,7 @@ typedef struct s_data
 	int		col;
 	void	*dragon;
 }	t_data;
-int		init_map(t_data *data,char *file);
+int		init_map(t_data *data, char *file);
 void	print_image(t_data data);
 void	init_struct(t_data *data);
 void	destroy(t_data *data);
@@ -59,4 +58,4 @@ void	free_map(t_data *data);
 void	close_my_game(t_data *data);
 int		mouse_event(t_data *data);
 int		key_event(int key, t_data *data);
-#endif // !SO_LONG_H
+#endif // !SO_LONG_BONUS_H

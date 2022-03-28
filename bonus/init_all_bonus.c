@@ -6,14 +6,14 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:27:37 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/26 02:23:20 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/28 18:16:21 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"so_long_bonus.h"
 
-int		img_width;
-int		img_height;
+int	g_img_width;
+int	g_img_height;
 
 /**
  * @brief i initialize all my variable in my structure
@@ -22,35 +22,35 @@ int		img_height;
  */
 void	init_struct(t_data *data)
 {
-	img_width = 5;
-	img_height = 5;
+	g_img_width = 5;
+	g_img_height = 5;
 	data->dragon = mlx_xpm_file_to_image(data->ptr_mlx,
-		"bonus/image_bonus/dragon.xpm", &img_width, &img_height);
+			"bonus/image_bonus/dragon.xpm", &g_img_width, &g_img_height);
 	data->perso = mlx_xpm_file_to_image(data->ptr_mlx,
-			"bonus/image_bonus/hero_fly.xpm", &img_width, &img_height);
+			"bonus/image_bonus/hero_fly.xpm", &g_img_width, &g_img_height);
 	data->wall = mlx_xpm_file_to_image(data->ptr_mlx,
-			"bonus/image_bonus/wall.xpm", &img_width, &img_height);
+			"bonus/image_bonus/wall.xpm", &g_img_width, &g_img_height);
 	data->collect = mlx_xpm_file_to_image(data->ptr_mlx,
-			"bonus/image_bonus/cristaux.xpm", &img_width, &img_height);
+			"bonus/image_bonus/cristaux.xpm", &g_img_width, &g_img_height);
 	data->flor = mlx_xpm_file_to_image(data->ptr_mlx,
-			"bonus/image_bonus/terre.xpm", &img_width, &img_height);
+			"bonus/image_bonus/terre.xpm", &g_img_width, &g_img_height);
 	if (tcheck_char(data->map, 'C') == 0)
 	{
 		data->door = mlx_xpm_file_to_image(data->ptr_mlx,
-				"bonus/image_bonus/door_open.xpm", &img_width, &img_height);
+				"bonus/image_bonus/door_open.xpm", &g_img_width, &g_img_height);
 		data->flag = 1;
 	}
 	else
 	{
 		data->door = mlx_xpm_file_to_image(data->ptr_mlx,
-					"bonus/image_bonus/porte.xpm", &img_width, &img_height);
+				"bonus/image_bonus/porte.xpm", &g_img_width, &g_img_height);
 		data->flag = 0;
 	}
 }
 
 /**
- * @brief in this fonctions i read all the file where my map it is, and i count the 
-   number of line, and i will use it for malloc my tab
+ * @brief in this fonctions i read all the file where my map it is,
+ * and i count the number of line, and i will use it for malloc my tab
  * 
  * @param file this is where my map file it storage
  * @return int 
@@ -77,13 +77,14 @@ void	count_line(char *file, t_data *data)
 }
 
 /**
- * @brief this fonction allow me to allocat memory for ma variable map in my struct
+ * @brief this fonction allow me to allocat memory
+ * for ma variable map in my struct
  * 
  * @param data 
  * @param file it the file where the map had been write
  * @param fd 
  */
-void allocate_map(t_data *data, char *file, int fd)
+void	allocate_map(t_data *data, char *file, int fd)
 {
 	count_line(file, data);
 	data->map = malloc(sizeof(char *) * data->row + 1);
@@ -93,7 +94,6 @@ void allocate_map(t_data *data, char *file, int fd)
 		ft_printf("Error\n verify init_map\n");
 		exit(1);
 	}
-	
 }
 
 /**
@@ -104,7 +104,7 @@ void allocate_map(t_data *data, char *file, int fd)
  * @param map this is the map who i want initialise
  * @return char** i return the my map
  */
-int	init_map(t_data *data,char *file)
+int	init_map(t_data *data, char *file)
 {
 	int	i;
 	int	fd;
@@ -112,12 +112,14 @@ int	init_map(t_data *data,char *file)
 	i = 0;
 	tcheck_name_map(file);
 	fd = open(file, O_RDONLY);
-	allocate_map(data, file,fd);
+	allocate_map(data, file, fd);
 	data->map[i] = get_next_line(fd);
-	while (data->map[i])
-	{
-		i++;
+	while (++i < data->row)
 		data->map[i] = get_next_line(fd);
+	if (data->map[data->row - 2][data->col - 1] != '\0')
+	{
+		free_map(data);
+		exit (1);
 	}
 	tcheck_element_map(data->map, data);
 	tcheck_contour_map(data->map, data);

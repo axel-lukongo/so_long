@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:27:37 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/26 13:09:23 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/28 18:10:14 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,14 @@ void	init_struct(t_data *data)
 	else
 		data->flag = 0;
 	data->door = mlx_xpm_file_to_image(data->ptr_mlx,
-				"image/porte.xpm", &img_width, &img_height);
+			"image/porte.xpm", &img_width, &img_height);
 }
 
 /**
- * @brief in this fonctions i read all the file where my map it is, and i count the 
-   number of line, and i will use it for malloc my tab
+ * @brief in this fonctions i read all the file where my map it is,
+ * and i count the number of line, and i will use it for malloc my tab/
  * 
- * @param file this is where my map file it storage
+ * @param file this is where my map file it srage
  */
 void	count_line(char *file, t_data *data)
 {
@@ -69,13 +69,14 @@ void	count_line(char *file, t_data *data)
 }
 
 /**
- * @brief this fonction allow me to allocat memory for ma variable map in my struct
+ * @brief this fonction allow me to allocat
+ * memory for ma variable map in my struct
  * 
  * @param data 
  * @param file it the file where the map had been write
  * @param fd 
  */
-void allocate_map(t_data *data, char *file, int fd)
+void	allocate_map(t_data *data, char *file, int fd)
 {
 	count_line(file, data);
 	data->map = malloc(sizeof(char *) * data->row + 1);
@@ -85,7 +86,6 @@ void allocate_map(t_data *data, char *file, int fd)
 		ft_printf("Error\n verify init_map\n");
 		exit(1);
 	}
-	
 }
 
 /**
@@ -96,7 +96,7 @@ void allocate_map(t_data *data, char *file, int fd)
  * @param map this is the map who i want initialise
  * @return char** i return the map initialized
  */
-int	init_map(t_data *data,char *file)
+int	init_map(t_data *data, char *file)
 {
 	int	i;
 	int	fd;
@@ -104,12 +104,14 @@ int	init_map(t_data *data,char *file)
 	i = 0;
 	tcheck_name_map(file);
 	fd = open(file, O_RDONLY);
-	allocate_map(data, file,fd);
+	allocate_map(data, file, fd);
 	data->map[i] = get_next_line(fd);
-	while (data->map[i])
-	{
-		i++;
+	while (++i < data->row)
 		data->map[i] = get_next_line(fd);
+	if (data->map[data->row - 2][data->col - 1] != '\0')
+	{
+		free_map(data);
+		exit (1);
 	}
 	tcheck_element_map(data->map, data);
 	tcheck_contour_map(data->map, data);

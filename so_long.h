@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 16:24:02 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/26 02:49:30 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/28 13:10:57 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@
 # include "ft_printf/ft_printf.h"
 # include"minilibx/mlx.h"
 
-
 typedef struct s_data
 {
 	void	*ptr_mlx;
@@ -41,7 +40,7 @@ typedef struct s_data
 	int		row;
 	int		col;
 }	t_data;
-int		init_map(t_data *data,char *file);
+int		init_map(t_data *data, char *file);
 void	print_image(t_data data);
 void	init_struct(t_data *data);
 void	destroy(t_data *data);
