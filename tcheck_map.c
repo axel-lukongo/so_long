@@ -6,12 +6,38 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:26:23 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/28 16:44:13 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/29 02:46:32 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"so_long.h"
 #include"minilibx/mlx.h"
+
+int nb_perso(char **map)
+{
+	int	i;
+	int	j;
+	int count_p;
+
+	count_p = 0;
+	i = 0;
+	j = 0;
+	while (map[i][j])
+	{
+		if (map[i][j] == 'P')
+			count_p++;
+		j++;
+		if (map[i][j] == '\n')
+		{
+			j = 0;
+			i++;
+		}
+	}
+	if (count_p != 1)
+		return (0);
+	return (1);
+}
+
 /**
  * @brief in this fonction i tcheck if i have at least one hero,
            one exit, and one collectable
@@ -37,10 +63,10 @@ void	tcheck_element_map(char **map, t_data *data)
 		ft_printf("Error\nmust have collectable");
 		exit(0);
 	}
-	if (tcheck_char(map, 'P') == 0)
+	if (tcheck_char(map, 'P') == 0 || nb_perso(map) == 0)
 	{
 		free_map(data);
-		ft_printf("Error\nmust have a personage");
+		ft_printf("Error\nmust have 1 personage");
 		exit(0);
 	}
 }
