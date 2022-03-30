@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:27:25 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/30 20:39:17 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/30 20:53:43 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,10 @@ void	shift_horizontal(t_data *data, int x, int y, int n)
 		init_struct(data);
 		print_image(*data);
 		g_count += 1;
-		mlx_string_put(data->ptr_mlx, data->win, 60 * data->row, 20, 0x00FF0000, ft_uitoa(g_count)); 
-		//ft_printf("%d\n", g_count);
+		data->count_move = ft_uitoa(g_count);
+		mlx_string_put(data->ptr_mlx, data->win, 60 * data->row,
+			20, 0x00FF0000, data->count_move); 
+		free(data->count_move);
 	}
 	if (data->map[x][y + n] == 'E' && data->flag == 1)
 		win_game(data);
@@ -90,8 +92,10 @@ void	shift_vertical(t_data *data, int x, int y, int n)
 		init_struct(data);
 		print_image(*data);
 		g_count += 1;
-		mlx_string_put(data->ptr_mlx, data->win, 60 * data->row, 20, 0x00FF0000, ft_uitoa(g_count)); 
-//		ft_printf("%d\n", g_count);
+		data->count_move = ft_uitoa(g_count);
+		mlx_string_put(data->ptr_mlx, data->win, 60 * data->row,
+			20, 0x00FF0000, data->count_move);
+		free(data->count_move);
 	}
 	if (data->map[x + n][y] == 'E' && data->flag == 1)
 		win_game(data);
