@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:26:23 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/29 02:48:26 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/03/30 15:57:39 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	tcheck_element_map(char **map, t_data *data)
 	}
 }
 
-/**
+/**~
  * @brief in this fonction i tcheck the border of my map
  * 
  * width this is the lentgh is my first line of my map
