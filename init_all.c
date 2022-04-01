@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:27:37 by alukongo          #+#    #+#             */
-/*   Updated: 2022/04/01 16:25:36 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/04/01 16:37:06 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ int	init_map(t_data *data, char *file)
 	data->map[i] = get_next_line(fd);
 	while (++i < data->row)
 		data->map[i] = get_next_line(fd);
-	if (data->map[data->row - 2][data->col - 1] != '\0')
+	if (data->map[data->row - 2])
 	{
 		//printf("ici\n");
 		free_map(data);
