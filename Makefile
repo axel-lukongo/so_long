@@ -42,12 +42,14 @@ CFLAGS	= -g -Wall -Werror -Wextra
 
 $(NAME): $(OBJ)
 	make -C ft_printf
+	make -C minilibx
 	$(CC) $(SRCS) minilibx/libmlx_Linux.a ft_printf/libftprintf.a -lXext -lX11 -o $(NAME) 
 
 all: ${NAME}
 
 bonus:	${BONUS_OBJS} ${BONUS}
 	make -C ft_printf
+	make -C minilibx
 	$(CC) $(BONUS_SRCS) minilibx/libmlx_Linux.a ft_printf/libftprintf.a -lXext -lX11 -o $(BONUS_NAME) 
 
 clean:
@@ -55,6 +57,7 @@ clean:
 
 fclean: clean
 	make fclean -C ft_printf
+	make clean -C minilibx
 	${RM} ${NAME} ${BONUS_NAME}
 
 re: fclean all
