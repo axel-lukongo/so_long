@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:26:23 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/29 02:46:32 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/04/01 16:17:26 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void	tcheck_contour_map(char **map, t_data *data)
 	i = 0;
 	j = 0;
 	width = ft_strlen(map[0]);
-	tcheck_diff(map[0], width, '1');
+	tcheck_diff(data, map[0], width, '1');
 	while (map[i][j])
 	{
 		if (map[i][j] == '\n')
@@ -103,7 +103,7 @@ void	tcheck_contour_map(char **map, t_data *data)
 		}
 		j++;
 	}
-	tcheck_diff(map[i], width, '1');
+	tcheck_diff(data, map[i], width, '1');
 }
 
 /**

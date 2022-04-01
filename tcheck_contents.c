@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 14:05:44 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/28 17:30:22 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/04/01 16:21:08 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	tcheck_char(char **map, char c)
  * @param length is the length of my map
  * @param c 
  */
-void	tcheck_diff(char *map, int length, char c)
+void	tcheck_diff(t_data *data,char *map, int length, char c)
 {
 	int	i;
 
@@ -60,6 +60,7 @@ void	tcheck_diff(char *map, int length, char c)
 	{
 		if (map[i] != c)
 		{
+			free_map(data);
 			ft_printf("Error\n you forgot a component in map");
 			exit (0);
 		}
