@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:26:23 by alukongo          #+#    #+#             */
-/*   Updated: 2022/04/04 15:41:21 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/04/04 16:59:49 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,6 @@ int nb_perso(char **map)
  */
 void	tcheck_element_map(char **map, t_data *data)
 {
-	if (check_char(data, '1') == 0)
-	{
-		free_map(data);
-		ft_printf("Error\nmust have a wall");
-		exit(0);
-	}
 	if (check_char(data, 'E') == 0)
 	{
 		free_map(data);

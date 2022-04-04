@@ -6,15 +6,14 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:26:23 by alukongo          #+#    #+#             */
-/*   Updated: 2022/04/04 16:02:07 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/04/04 18:04:08 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"so_long.h"
 #include"minilibx/mlx.h"
 
-/*
-int nb_perso(char **map)
+int nb_perso(t_data *data)
 {
 	int	i;
 	int	j;
@@ -23,22 +22,26 @@ int nb_perso(char **map)
 	count_p = 0;
 	i = 0;
 	j = 0;
-	while (map[i][j])
+	while (i < data->row - 2)
 	{
-		if (map[i][j] == 'P')
+		if (ft_strlen(data->map[i]) != data->col)
+			return (0);
+		if (data->map[i][j] == 'P')
 			count_p++;
 		j++;
-		if (map[i][j] == '\n')
+		if (j == data->col)
 		{
 			j = 0;
 			i++;
 		}
 	}
+	if(ft_strlen(data->map[data->row - 2]) != data->col - 1)
+		return(0);
 	if (count_p != 1)
 		return (0);
 	return (1);
 }
-*/
+
 /**
  * @brief in this fonction i tcheck if i have at least one hero,
            one exit, and one collectable
@@ -59,10 +62,10 @@ void	tcheck_element_map(char **map, t_data *data)
 		ft_printf("Error\nmust have collectable");
 		exit(0);
 	}
-	if (check_char(data, 'P') == 0)
+	if (check_char(data, 'P') == 0 || nb_perso(data) == 0)
 	{
 		free_map(data);
-		ft_printf("Error\nmust have 1 personage");
+		ft_printf("Error\n check personnage or form of the map");
 		exit(0);
 	}
 }

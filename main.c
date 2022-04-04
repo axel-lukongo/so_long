@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 14:31:46 by alukongo          #+#    #+#             */
-/*   Updated: 2022/04/04 15:20:07 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/04/04 16:57:54 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,22 @@
  */
 void	put_in_window(t_data data, char c, int x, int y)
 {
-	if (c == '1')
-		mlx_put_image_to_window(data.ptr_mlx, data.win, data.wall, x, y);
-	else if (c == '0')
-		mlx_put_image_to_window(data.ptr_mlx, data.win, data.flor, x, y);
-	else if (c == 'P')
-		mlx_put_image_to_window(data.ptr_mlx, data.win, data.perso, x, y);
-	else if (c == 'C')
-		mlx_put_image_to_window(data.ptr_mlx, data.win, data.collect, x, y);
-	else if (c == 'E')
-		mlx_put_image_to_window(data.ptr_mlx, data.win, data.door, x, y);
+	if (c == '1' || c == '0' || c == 'P' || c == 'C' || c == 'E')
+	{
+		if (c == '1')
+			mlx_put_image_to_window(data.ptr_mlx, data.win, data.wall, x, y);
+		else if (c == '0')
+			mlx_put_image_to_window(data.ptr_mlx, data.win, data.flor, x, y);
+		else if (c == 'P')
+			mlx_put_image_to_window(data.ptr_mlx, data.win, data.perso, x, y);
+		else if (c == 'C')
+			mlx_put_image_to_window(data.ptr_mlx, data.win, data.collect, x, y);
+		else if (c == 'E')
+			mlx_put_image_to_window(data.ptr_mlx, data.win, data.door, x, y);
+		return ;
+	}
+	if (c != '\n' && c != '\0')
+		close_my_game(&data);
 }
 
 /**
@@ -58,6 +64,7 @@ void	print_image(t_data data)
 	i = 0;
 	while (i < data.row - 1)
 	{
+		//printf("c = %c \n", data.map[i][j]);
 		put_in_window(data, data.map[i][j], x, y);
 		j++;
 		x += 50;
