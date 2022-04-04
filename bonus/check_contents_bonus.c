@@ -1,36 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tcheck_contents_bonus.c                            :+:      :+:    :+:   */
+/*   check_contents_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 14:05:44 by alukongo          #+#    #+#             */
-/*   Updated: 2022/04/04 15:33:11 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/04/04 21:31:33 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"so_long_bonus.h"
+#include"../minilibx/mlx.h"
 /**
- * @brief i tcheck if i have the char in my variable c in my map
+ * @brief i check if i have the char in my variable c in my map
  * 
  * @param map 
  * @param c the char who i want look in my map
  * @return int 
  */
-int	check_char(char **map, char c)
+int	check_char(t_data *data, char c)
 {
 	int	i;
 	int	j;
 
 	i = 0;
 	j = 0;
-	while (map[i][j])
+	while (i < data->row - 1)
 	{
-		if (map[i][j] == c)
+		if (data->map[i][j] == c)
 			return (1);
 		j++;
-		if (map[i][j] == '\n')
+		if (j == data->col)
 		{
 			j = 0;
 			i++;
@@ -39,7 +40,15 @@ int	check_char(char **map, char c)
 	return (0);
 }
 
-void	tcheck_diff(char *map, int length, char c)
+/**
+ * @brief in this fonction function i check if the 
+    line have the same length than the first line
+ * 
+ * @param map 
+ * @param length is the length of my map
+ * @param c 
+ */
+void	check_diff(t_data *data,char *map, int length, char c)
 {
 	int	i;
 
@@ -48,7 +57,8 @@ void	tcheck_diff(char *map, int length, char c)
 	{
 		if (map[i] != c)
 		{
-			ft_printf("Error\nwall ain't close by a wall");
+			free_map(data);
+			ft_printf("Error\n you forgot a component in map");
 			exit (0);
 		}
 		i++;

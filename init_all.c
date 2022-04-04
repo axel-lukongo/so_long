@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:27:37 by alukongo          #+#    #+#             */
-/*   Updated: 2022/04/04 18:08:06 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/04/04 22:25:38 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	allocate_map(t_data *data, char *file, int fd)
 }
 
 /**
- * @brief in this fonction i tcheck the name of my file,
+ * @brief in this fonction i check the name of my file,
 	initialise my map
 	and i check the map at the end;
  * 
@@ -102,7 +102,7 @@ int	init_map(t_data *data, char *file)
 	int	fd;
 
 	i = 0;
-	tcheck_name_map(file);
+	check_name_map(file);
 	fd = open(file, O_RDONLY);
 	allocate_map(data, file, fd);
 	while (1)
@@ -113,7 +113,8 @@ int	init_map(t_data *data, char *file)
 		i++;
 	}
 	data->map[i] = NULL;
-	tcheck_contour_map(data->map, data);
-	tcheck_element_map(data->map, data);
+	
+	check_contour_map(data->map, data);
+	check_element_map(data->map, data);
 	return (1);
 }

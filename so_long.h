@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 16:24:02 by alukongo          #+#    #+#             */
-/*   Updated: 2022/04/04 15:29:20 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/04/04 18:27:35 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,10 @@ int		move_vertical(t_data *data, int sign);
 void	open_door(t_data *data);
 int		check_char(t_data *data, char c);
 void	win_game(t_data *data);
-void	tcheck_element_map(char **map, t_data *data);
-void	tcheck_name_map(char *file);
-void	tcheck_contour_map(char **map, t_data *data);
-void	tcheck_diff(t_data *data,char *map, int length, char c);
+void	check_element_map(char **map, t_data *data);
+void	check_name_map(char *file);
+void	check_contour_map(char **map, t_data *data);
+void	check_diff(t_data *data,char *map, int length, char c);
 void	free_map(t_data *data);
 void	close_my_game(t_data *data);
 int		mouse_event(t_data *data);

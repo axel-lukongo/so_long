@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tcheck_map.c                                       :+:      :+:    :+:   */
+/*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:26:23 by alukongo          #+#    #+#             */
-/*   Updated: 2022/04/04 18:07:46 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/04/04 18:26:59 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"so_long.h"
 #include"minilibx/mlx.h"
 
-int	nb_perso(t_data *data)
+int nb_perso(t_data *data)
 {
 	int	i;
 	int	j;
-	int	count_p;
+	int count_p;
 
 	count_p = 0;
 	i = 0;
@@ -35,19 +35,19 @@ int	nb_perso(t_data *data)
 			i++;
 		}
 	}
-	if (ft_strlen(data->map[data->row - 2]) != data->col - 1)
-		return (0);
+	if(ft_strlen(data->map[data->row - 2]) != data->col - 1)
+		return(0);
 	if (count_p != 1)
 		return (0);
 	return (1);
 }
 
 /**
- * @brief in this fonction i tcheck if i have at least one hero,
+ * @brief in this fonction i check if i have at least one hero,
            one exit, and one collectable
  * @param map 
  */
-void	tcheck_element_map(char **map, t_data *data)
+void	check_element_map(char **map, t_data *data)
 {
 	(void) map;
 	if (check_char(data, 'E') == 0)
@@ -71,21 +71,21 @@ void	tcheck_element_map(char **map, t_data *data)
 }
 
 /**
- * @brief in this fonction i tcheck the border of my map
+ * @brief in this fonction i check the border of my map
  * 
  * width this is the lentgh in my first line of my map
  * 
  * @param map this is my map 
  */
-void	tcheck_contour_map(char **map, t_data *data)
+void	check_contour_map(char **map, t_data *data)
 {
 	int	i;
 	int	j;
 
 	i = 0;
 	j = 0;
-	tcheck_diff(data, map[0], data->col, '1');
-	tcheck_diff(data, map[data->row - 2], data->col, '1');
+	check_diff(data, map[0], data->col, '1');
+	check_diff(data, map[data->row - 2], data->col, '1');
 	while (i < data->row - 1)
 	{
 		if (j == data->col - 1)
@@ -104,11 +104,11 @@ void	tcheck_contour_map(char **map, t_data *data)
 }
 
 /**
- * @brief in this fonction i tcheck if i the file name finish by .ber else i exit
+ * @brief in this fonction i check if i the file name finish by .ber else i exit
  * 
  * @param file this is the name of the file where i store my map
  */
-void	tcheck_name_map(char *file)
+void	check_name_map(char *file)
 {
 	int	i;
 

@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:27:37 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/28 18:16:21 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/04/04 21:56:32 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	init_struct(t_data *data)
 			"bonus/image_bonus/cristaux.xpm", &g_img_width, &g_img_height);
 	data->flor = mlx_xpm_file_to_image(data->ptr_mlx,
 			"bonus/image_bonus/terre.xpm", &g_img_width, &g_img_height);
-	if (tcheck_char(data->map, 'C') == 0)
+	if (check_char(data, 'C') == 0)
 	{
 		data->door = mlx_xpm_file_to_image(data->ptr_mlx,
 				"bonus/image_bonus/door_open.xpm", &g_img_width, &g_img_height);
@@ -97,7 +97,7 @@ void	allocate_map(t_data *data, char *file, int fd)
 }
 
 /**
- * @brief in this fonction i tcheck the name of my file,
+ * @brief in this fonction i check the name of my file,
 	initialise my map
 	and i check the map at the end;
  * 
@@ -110,18 +110,19 @@ int	init_map(t_data *data, char *file)
 	int	fd;
 
 	i = 0;
-	tcheck_name_map(file);
+	check_name_map(file);
 	fd = open(file, O_RDONLY);
 	allocate_map(data, file, fd);
-	data->map[i] = get_next_line(fd);
-	while (++i < data->row)
-		data->map[i] = get_next_line(fd);
-	if (data->map[data->row - 2][data->col - 1] != '\0')
+	while (1)
 	{
-		free_map(data);
-		exit (1);
+		data->map[i] = get_next_line(fd);
+		if (data->map[i] == NULL)
+			break ;
+		i++;
 	}
-	tcheck_element_map(data->map, data);
-	tcheck_contour_map(data->map, data);
+	data->map[i] = NULL;
+	
+	check_contour_map(data->map, data);
+	check_element_map(data->map, data);
 	return (1);
 }
