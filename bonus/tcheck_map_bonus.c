@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:26:23 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/30 15:57:39 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/04/04 15:41:21 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,25 +44,25 @@ int nb_perso(char **map)
  */
 void	tcheck_element_map(char **map, t_data *data)
 {
-	if (tcheck_char(map, '1') == 0)
+	if (check_char(data, '1') == 0)
 	{
 		free_map(data);
 		ft_printf("Error\nmust have a wall");
 		exit(0);
 	}
-	if (tcheck_char(map, 'E') == 0)
+	if (check_char(data, 'E') == 0)
 	{
 		free_map(data);
 		ft_printf("Error\nmust have a exit");
 		exit(0);
 	}
-	if (tcheck_char(map, 'C') == 0)
+	if (check_char(data, 'C') == 0)
 	{
 		free_map(data);
 		ft_printf("Error\nmust have collectable");
 		exit(0);
 	}
-	if (tcheck_char(map, 'P') == 0 || nb_perso(map) == 0)
+	if (check_char(data, 'P') == 0)
 	{
 		free_map(data);
 		ft_printf("Error\nmust have a personage");
@@ -86,11 +86,11 @@ void	tcheck_contour_map(char **map, t_data *data)
 	i = 0;
 	j = 0;
 	width = ft_strlen(map[0]);
-	tcheck_diff(map[0], width, '1');
-	while (map[i][j])
+	tcheck_diff(map[i], width, '1');
+	while (i < data->row - 1)
 	{
 		j++;
-		if (map[i][j] == '\n')
+		if (j == data->col)
 		{
 			if (map[i][0] != '1' || map[i][j - 1] != '1' || j > width)
 			{

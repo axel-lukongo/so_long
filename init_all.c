@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:27:37 by alukongo          #+#    #+#             */
-/*   Updated: 2022/04/01 16:37:06 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/04/04 16:04:50 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	init_struct(t_data *data)
 			"image/cristaux.xpm", &img_width, &img_height);
 	data->flor = mlx_xpm_file_to_image(data->ptr_mlx,
 			"image/terre.xpm", &img_width, &img_height);
-	if (tcheck_char(data->map, 'C') == 0)
+	if (check_char(data, 'C') == 0)
 		data->flag = 1;
 	else
 		data->flag = 0;
@@ -105,16 +105,20 @@ int	init_map(t_data *data, char *file)
 	tcheck_name_map(file);
 	fd = open(file, O_RDONLY);
 	allocate_map(data, file, fd);
-	data->map[i] = get_next_line(fd);
-	while (++i < data->row)
-		data->map[i] = get_next_line(fd);
-	if (data->map[data->row - 2])
+	while (1)
 	{
-		//printf("ici\n");
-		free_map(data);
-		exit (1);
+		data->map[i] = get_next_line(fd);
+		if (ft_strlen(data->map[i]) != data->col)
+		{
+			free_map(data);
+			exit(1);
+		}
+		if (data->map[i] == NULL)
+			break ;
+		i++;
 	}
-	tcheck_element_map(data->map, data);
+	data->map[i] = NULL;
 	tcheck_contour_map(data->map, data);
+	tcheck_element_map(data->map, data);
 	return (1);
 }

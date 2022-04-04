@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 14:05:44 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/26 02:50:05 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/04/04 15:33:11 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
  * @param c the char who i want look in my map
  * @return int 
  */
-int	tcheck_char(char **map, char c)
+int	check_char(char **map, char c)
 {
 	int	i;
 	int	j;

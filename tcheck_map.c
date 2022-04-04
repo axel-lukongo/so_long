@@ -6,13 +6,14 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:26:23 by alukongo          #+#    #+#             */
-/*   Updated: 2022/04/01 16:17:26 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/04/04 16:02:07 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"so_long.h"
 #include"minilibx/mlx.h"
 
+/*
 int nb_perso(char **map)
 {
 	int	i;
@@ -37,7 +38,7 @@ int nb_perso(char **map)
 		return (0);
 	return (1);
 }
-
+*/
 /**
  * @brief in this fonction i tcheck if i have at least one hero,
            one exit, and one collectable
@@ -45,25 +46,20 @@ int nb_perso(char **map)
  */
 void	tcheck_element_map(char **map, t_data *data)
 {
-	if (tcheck_char(map, '1') == 0)
-	{
-		free_map(data);
-		ft_printf("Error\nmust have a wall");
-		exit(0);
-	}
-	if (tcheck_char(map, 'E') == 0)
+	(void) map;
+	if (check_char(data, 'E') == 0)
 	{
 		free_map(data);
 		ft_printf("Error\nmust have a exit");
 		exit(0);
 	}
-	if (tcheck_char(map, 'C') == 0)
+	if (check_char(data, 'C') == 0)
 	{
 		free_map(data);
 		ft_printf("Error\nmust have collectable");
 		exit(0);
 	}
-	if (tcheck_char(map, 'P') == 0 || nb_perso(map) == 0)
+	if (check_char(data, 'P') == 0)
 	{
 		free_map(data);
 		ft_printf("Error\nmust have 1 personage");
@@ -82,17 +78,16 @@ void	tcheck_contour_map(char **map, t_data *data)
 {
 	int	i;
 	int	j;
-	int	width;
 
 	i = 0;
 	j = 0;
-	width = ft_strlen(map[0]);
-	tcheck_diff(data, map[0], width, '1');
-	while (map[i][j])
+	tcheck_diff(data, map[0], data->col, '1');
+	tcheck_diff(data, map[data->row - 2], data->col, '1');
+	while (i < data->row - 1)
 	{
-		if (map[i][j] == '\n')
+		if (j == data->col - 1)
 		{
-			if (map[i][0] != '1' || map[i][j - 1] != '1' || j > width)
+			if (map[i][0] != '1' || map[i][j - 1] != '1')
 			{
 				free_map(data);
 				ft_printf("Error\nmap ain't close by a wall");
@@ -103,7 +98,6 @@ void	tcheck_contour_map(char **map, t_data *data)
 		}
 		j++;
 	}
-	tcheck_diff(data, map[i], width, '1');
 }
 
 /**

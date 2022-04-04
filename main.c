@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 14:31:46 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/28 12:57:49 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/04/04 15:20:07 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,12 @@ void	print_image(t_data data)
 	j = 0;
 	x = 0;
 	i = 0;
-	while (data.map[i][j] != '\0')
+	while (i < data.row - 1)
 	{
 		put_in_window(data, data.map[i][j], x, y);
 		j++;
 		x += 50;
-		if (data.map[i][j] == '\n')
+		if (j == data.col)
 		{
 			y += 50;
 			x = 0;
