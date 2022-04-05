@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:26:23 by alukongo          #+#    #+#             */
-/*   Updated: 2022/04/05 14:25:58 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/04/05 15:37:51 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,6 @@ void	check_name_map(char *file)
 							return ;
 		i++;
 	}
-	ft_printf("Error\nfile must finish by .ber");
+	ft_printf("Error\nwrong name map or type of file");
 	exit (1);
 }

@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:27:37 by alukongo          #+#    #+#             */
-/*   Updated: 2022/04/05 14:26:15 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/04/05 15:38:34 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,14 @@ void	count_line(char *file, t_data *data)
  */
 void	allocate_map(t_data *data, char *file, int fd)
 {
+	if (fd < 0)
+	{
+		ft_printf("Error\n invalid fd");
+		exit(1);
+	}
 	count_line(file, data);
 	data->map = malloc(sizeof(char *) * data->row + 1);
-	if (!data->map || fd < 0)
+	if (!data->map || data->row < 3)
 	{
 		free(data->map);
 		ft_printf("Error\n verify init_map\n");

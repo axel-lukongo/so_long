@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 14:31:46 by alukongo          #+#    #+#             */
-/*   Updated: 2022/04/05 14:02:47 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/04/05 15:10:22 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,12 @@ int	main(int ac, char **av)
 	data.map = NULL;
 	init_map(&data, av[1]);
 	data.ptr_mlx = mlx_init();
+	if (!data.ptr_mlx)
+	{
+		ft_printf("Error\nmlx_init failed");
+		free_map(&data);
+		exit(1);
+	}
 	data.win = mlx_new_window(data.ptr_mlx,
 			data.col * 50, data.row * 50, "windows");
 	init_struct(&data);
