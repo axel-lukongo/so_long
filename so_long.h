@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 16:24:02 by alukongo          #+#    #+#             */
-/*   Updated: 2022/04/04 18:27:35 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/04/05 13:43:10 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct s_data
 	int		flag;
 	int		row;
 	int		col;
+	int		count_p;
 }	t_data;
 int		init_map(t_data *data, char *file);
 void	print_image(t_data data);
@@ -52,7 +53,7 @@ void	win_game(t_data *data);
 void	check_element_map(char **map, t_data *data);
 void	check_name_map(char *file);
 void	check_contour_map(char **map, t_data *data);
-void	check_diff(t_data *data,char *map, int length, char c);
+void	check_diff(t_data *data, char *map, int length, char c);
 void	free_map(t_data *data);
 void	close_my_game(t_data *data);
 int		mouse_event(t_data *data);

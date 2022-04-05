@@ -6,20 +6,28 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:26:23 by alukongo          #+#    #+#             */
-/*   Updated: 2022/04/04 18:26:59 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/04/05 13:51:03 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"so_long.h"
 #include"minilibx/mlx.h"
 
-int nb_perso(t_data *data)
+/**
+ * @brief here i check the length of every line of my map and i check if i have
+ * many hero
+ * 
+ * @param data 
+ * @return int: i return 0 if i have something wrong: 
+ * if i have many hero or if the length of the line of my map ain't all the same.
+ * else i return 1 it mean every thing is good
+ */
+int	nb_perso(t_data *data)
 {
 	int	i;
 	int	j;
-	int count_p;
 
-	count_p = 0;
+	data->count_p = 0;
 	i = 0;
 	j = 0;
 	while (i < data->row - 2)
@@ -27,24 +35,23 @@ int nb_perso(t_data *data)
 		if (ft_strlen(data->map[i]) != data->col)
 			return (0);
 		if (data->map[i][j] == 'P')
-			count_p++;
-		j++;
-		if (j == data->col)
+			data->count_p++;
+		if (++j == data->col)
 		{
 			j = 0;
 			i++;
 		}
 	}
-	if(ft_strlen(data->map[data->row - 2]) != data->col - 1)
-		return(0);
-	if (count_p != 1)
+	if (ft_strlen(data->map[data->row - 2]) != data->col - 1)
+		return (0);
+	if (data->count_p != 1)
 		return (0);
 	return (1);
 }
 
 /**
  * @brief in this fonction i check if i have at least one hero,
-           one exit, and one collectable
+ * one exit, and one collectable
  * @param map 
  */
 void	check_element_map(char **map, t_data *data)
