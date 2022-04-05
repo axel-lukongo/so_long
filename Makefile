@@ -43,14 +43,14 @@ CFLAGS	= -g -Wall -Werror -Wextra
 $(NAME): $(OBJ)
 	make -C ft_printf
 	make -C minilibx
-	$(CC) $(SRCS) minilibx/libmlx_Linux.a ft_printf/libftprintf.a -lXext -lX11 -o $(NAME) 
+	$(CC) $(SRCS) ${CFLAGS} minilibx/libmlx_Linux.a ft_printf/libftprintf.a -lXext -lX11 -o $(NAME) 
 
 all: ${NAME}
 
 bonus:	${BONUS_OBJS} ${BONUS}
 	make -C ft_printf
 	make -C minilibx
-	$(CC) $(BONUS_SRCS) minilibx/libmlx_Linux.a ft_printf/libftprintf.a -lXext -lX11 -o $(BONUS_NAME) 
+	$(CC) $(BONUS_SRCS) ${CFLAGS} minilibx/libmlx_Linux.a ft_printf/libftprintf.a -lXext -lX11 -o $(BONUS_NAME) 
 
 clean:
 	${RM} ${OBJ} ${BONUS_OBJS}

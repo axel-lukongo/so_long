@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:27:37 by alukongo          #+#    #+#             */
-/*   Updated: 2022/04/04 21:56:32 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/04/05 14:26:15 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,6 @@ int	init_map(t_data *data, char *file)
 		i++;
 	}
 	data->map[i] = NULL;
-	
 	check_contour_map(data->map, data);
 	check_element_map(data->map, data);
 	return (1);

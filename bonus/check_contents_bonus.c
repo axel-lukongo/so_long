@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 14:05:44 by alukongo          #+#    #+#             */
-/*   Updated: 2022/04/04 21:31:33 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/04/05 14:25:43 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	check_char(t_data *data, char c)
  * @param length is the length of my map
  * @param c 
  */
-void	check_diff(t_data *data,char *map, int length, char c)
+void	check_diff(t_data *data, char *map, int length, char c)
 {
 	int	i;
 

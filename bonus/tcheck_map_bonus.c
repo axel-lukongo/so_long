@@ -12,11 +12,11 @@
 
 #include"so_long_bonus.h"
 
-int nb_perso(char **map)
+int	nb_perso(char **map)
 {
 	int	i;
 	int	j;
-	int count_p;
+	int	count_p;
 
 	count_p = 0;
 	i = 0;

@@ -6,18 +6,18 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:26:23 by alukongo          #+#    #+#             */
-/*   Updated: 2022/04/04 18:27:56 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/04/05 14:25:58 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"so_long_bonus.h"
 #include"../minilibx/mlx.h"
 
-int nb_perso(t_data *data)
+int	nb_perso(t_data *data)
 {
 	int	i;
 	int	j;
-	int count_p;
+	int	count_p;
 
 	count_p = 0;
 	i = 0;
@@ -35,8 +35,8 @@ int nb_perso(t_data *data)
 			i++;
 		}
 	}
-	if(ft_strlen(data->map[data->row - 2]) != data->col - 1)
-		return(0);
+	if (ft_strlen(data->map[data->row - 2]) != data->col - 1)
+		return (0);
 	if (count_p != 1)
 		return (0);
 	return (1);

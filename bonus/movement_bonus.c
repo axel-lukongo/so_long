@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:27:25 by alukongo          #+#    #+#             */
-/*   Updated: 2022/03/30 20:53:43 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/04/05 14:26:21 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	shift_horizontal(t_data *data, int x, int y, int n)
 		g_count += 1;
 		data->count_move = ft_uitoa(g_count);
 		mlx_string_put(data->ptr_mlx, data->win, 60 * data->row,
-			20, 0x00FF0000, data->count_move); 
+			20, 0x00FF0000, data->count_move);
 		free(data->count_move);
 	}
 	if (data->map[x][y + n] == 'E' && data->flag == 1)

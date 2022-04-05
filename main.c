@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 14:31:46 by alukongo          #+#    #+#             */
-/*   Updated: 2022/04/04 18:07:59 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/04/05 14:02:47 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,10 @@ void	put_in_window(t_data data, char c, int x, int y)
 		return ;
 	}
 	if (c != '\n' && c != '\0')
+	{
+		ft_printf("Error\n other character detected");
 		close_my_game(&data);
+	}
 }
 
 /**
